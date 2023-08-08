@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[export]{adjustbox}
+\usepackage{braket}
+\usepackage{listings}
+\usepackage{mathcomp}
+\usepackage{hyperref}
+\usepackage{bm,amsmath}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{physics}
+\usepackage{amsmath}
+\title{Title}
+\author{Ting-Kai Hsu}
+\date{Date}
+
+\begin{document}
+
+\section{For operator}
+The Associative Axiom of outer product.
+that is, the outer product acting on a ket can be seen as a constant(complex) multiple on the a ket.
+So that the outer product equals to operator.
+\\
+Something can is left as exercise that is the bra of the operator,
+and then we can make use of the outer product.
+\\
+One should also note that the notion of operator and eigenvalue is important.
+\\
+And important thing is completeness relation in quantum mechanics.
+It must be statisfied so that we are able to describe the physics state or any quantum state as a linear combination of basis vectors.
+We can insert the identity operator \textbf{in any place}.
+\\
+\textbf{Projectoin Operator} is a outer product that can be used on a arbitrary ket.
+and the effect that the outer product acting on this ket is that we'll obtain an another ket, as below:
+\begin{center}
+$\ketbra*{a'}{a'} \cdot \ket*{\alpha} = \ket*{a'} \cdot \braket*{'a'}{\alpha } = \braket*{a'}{\alpha } \ket*{a'}$
+\end{center}
+And we say $\braket*{a'}{ \alpha}$ is the portion of $\ket*{\alpha}$ parallel to $\ket*{a'}$ 
+
+\section{Matrix Representation}
+We must notice \textbf{ket} and \textbf{bra} has the following relation:
+\begin{center}
+$\braket*{a'}{a''} = \mathit{c}$
+\end{center}
+where $c$ is a \textbf{complex number}.
+And we shall introduce another notation of \textbf{ket} and \textbf{bra}, that is, \textbf{matrix}.
+Because the relation between ket and bra, we'll have \textbf{column matrix} to represent \textbf{ket},
+and \textbf{row matirx} to represent \textbf{bra}.
+The reason that we can represent them by matrix is that the multiplication of \textbf{row matrix} and \textbf{column matrix} is also a complex number.
+For instance, \textbf{ket} can be represented by following:
+\begin{center}
+$\ket*{\alpha } = \begin{pmatrix}
+                  \braket*{a^{(1)}}{\alpha }\\
+                  \braket*{a^{(2)}}{\alpha }\\
+                  \braket*{a^{(3)}}{\alpha }\\
+                  \cdot\\
+                  \cdot\\
+                  \cdot\\
+                  \braket*{a^{(n)}}{\alpha }\\
+                  \end{pmatrix}$
+\end{center}
+and we have the representation of \textbf{bra}
+\begin{center}
+    $\bra*{\beta } = \begin{pmatrix}
+                     \braket*{\beta }{a^{(1)}} & \braket*{\beta }{a^{(2)}}& \braket*{\beta }{a^{(3)}} & \cdot\cdot\cdot & \braket*{\beta }{a^{(n)}}
+                     \end{pmatrix}$
+\end{center}
+Also note that we can represent by the \textbf{complex comjuncate} of the element of the matirx above.
+\begin{center}
+    $\bra*{\beta } = \begin{pmatrix}
+                     \braket*{a^{(1)}}{\beta}^{*} & \braket*{a^{(2)}}{\beta}^{*}& \braket*{a^{(3)}}{\beta}^{*}& \cdot\cdot\cdot & \braket*{a^{(3)}}{\beta}^{*}
+                     \end{pmatrix}$
+\end{center}
+\end{document}

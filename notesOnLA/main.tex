@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{mathcomp}
+\usepackage{hyperref}
+\usepackage{bm, amsmath}
+\usepackage{float}
+\usepackage{minted}
+\title{Title}
+\author{Ting-Kai Hsu}
+\date{Date}
+
+\begin{document}
+\section{Eigenvalues and Eigenvectors}
+Eigenvalues are useful when we want to find out the \textbf{powers of matrix}. First, we shall talk about what is \textbf{Eigenvectors}, it is origined from a concept that \textbf{almost every vector will change its direction after the matrix A acting on them.} However, there are some vectors that wouldn't change their direction, that is,
+\begin{center}
+    $A\mathbf{x} = \lambda \mathbf{x}$
+\end{center}
+Where $\lambda$ is a real number(or a comple number).
+And we call $\lambda$ A's \textbf{eigenvalue} and \textbf{x} A's \textbf{eigenvector}.
+\\
+In \textbf{Dirac Notaion}, a vector $\mathbf{x}$ can been seen as a \textbf{ket}\footnote{However, there is a slightly difference between them, that is, the ket emphasizes on its direction but not its magnitude, yet for vector we consider both.} and the matirx $A$ can been seen as an \textbf{operator}. There Dirac notaion is as shown below:
+
+\begin{center}
+   $A\ket*{x} = \lambda \ket*{x}$ 
+\end{center}
+
+\section{The Way to Find Eigenvalues and Eigenvectors}
+
+As we may see in the following secitons, it is worth mentioning the properties with eigenvalue:
+
+\begin{center}
+    \textit{m} by \textit{m} matrix should have \textbf{m} eigenvalues and \textbf{m} eigenvectors. 
+\end{center}
+
+As for the way to find out eigenvalue, we should use the following formula which would be fully explained in the following context:
+
+\begin{center}
+    $det(A-\lambda I) = 0$
+\end{center}
+
+\textbf{Example:} consider a 2 by 2 matrix A,
+    \begin{center}
+    $A=\begin{pmatrix}
+        .8 & .3\\
+        .2 & .7
+    \end{pmatrix}$
+\end{center}
+
+and then we shall see $det(A-\lambda I) = 0$
+
+\begin{center}
+    $det\begin{pmatrix}
+        .8-\lambda & .3\\
+        .2 & .7-\lambda
+        \end{pmatrix} = \lambda^{2}-1.5\lambda + 0.5 = (\lambda-1)(\lambda-\frac{1}{2})$
+\end{center}
+
+So the two eigenvalues are $\lambda = 1$ and $\lambda = \frac{1}{2}$.
+For these eigenvalues, we can see that the matrix $A-\lambda I$ becomes \textit{singular matrix}\footnote{The definition of singular matrix is that the determination is 0, that is, not invertible}. And since the definition of eigenvector is as below:
+
+\begin{center}
+    $A \mathbf{x} = \lambda \mathbf{x}$
+\end{center}
+
+It is clearly\footnote{one can check this by writing out the system of equations} that
+
+\begin{center}
+    $(A-\lambda I)\mathbf{x} = \mathbf{0}$
+\end{center}
+
+So we can conclude that \textbf{eigenvectors} are in the \textbf{nullspace}\footnote{Nullspace is the space of solutions of $A\mathbf{x} = \mathbf{0}$, and is denoted by $\mathbf{N}(A)$. One can simply check that we are able to add adn multiply without leaving the nullspace, so it is a subsapce.} of $A- \lambda I$, that is, we'll have the following equation for the \textbf{example}:
+
+\begin{center}
+    $(A-I)\mathbf{x_{1} = \mathbf{0}}$
+\end{center}
+
+If we write it out explicitly,
+
+\begin{center}
+    $\begin{pmatrix}
+        -0.2 & 0.3 \\
+        0.2 & -0.3
+    \end{pmatrix} \begin{pmatrix}
+        x_1\\
+        y_1
+    \end{pmatrix}= \begin{pmatrix}
+        0\\
+        0
+    \end{pmatrix}$
+\end{center}
+
+and then we'll have $0.2x_1 - 0.3y_1 = 0$, thus we can choose the eigenvector $\mathbf{x_{1}}$ to be $(.6, .4)$. Similarly, we'll have $\mathbf{x_{2}} = (.5, -.5)$.
+Because of the definition of eigenvalue and eigenvector, we'll have the following properties:
+
+\begin{center}
+    \textit{When A is squared, the eigenvectors stay the same, but the eigenvalues are squared.}
+\end{center}
+
+The fact that \textbf{all other vectors are combinations of the eigenvectors}, and the proof needs to be specified. However, for now we shall use this properties and that \textbf{Each eigenvector is multiplied by its eigenvalue, when we multiply by A}, and we can accomplish all multiplication of all vectors with matrix A. After a short introdution to eigenvalue and eigenvector, one should know that \textit{special matrix will have special eigenvalue and eigenvector whose patterns and properties are worth studying}.
+
+\section{Diagonalizing a Matrix}
+
+From the above sections, we've already learnt the concept and definition of eigenvector and eigenvalue. In this section, we'll go through the most important application of them, that is, \textbf{Diagonalization}.
+
+\begin{center}
+    Suppose the \textit{n} by \textit{n} matrix A has \textit{n} linearly independent\footnote{without n independent eigenvectors, we can't diagonalize.} eigenvectors $\mathbf{x_1, ..., x_n}$. 
+    \\
+    Put them into the \textbf{columns} of an \textbf{eigenvector matrix} S. 
+    \\
+    Then we would have $S^{-1} A S$ is the \textbf{eigenvalue matrix} $\Lambda$ which is a diagonal matrix with \textbf{eigenvalue $\lambda$ on its diagonal}.
+\end{center}
+
+The proof is simple, consider A times S:
+
+\begin{center}
+    $AS = A \begin{pmatrix}
+                \mathbf{x_1} & ... & \mathbf{x_n}
+            \end{pmatrix} = \begin{pmatrix}
+                \lambda_1\mathbf{x_1} & ... & \lambda_n\mathbf{x_n}
+            \end{pmatrix}$
+\end{center}
+
+where we make use of the definition of eigenvalue and eigenvector.
+and then the trick is to \textbf{split this matrix AS into S times $\Lambda$}.
+
+\begin{center}
+    $\begin{pmatrix}
+        \lambda_1\mathbf{x_1} & ... & \lambda_n\mathbf{x_n}
+    \end{pmatrix} = \begin{pmatrix}
+        \mathbf{x_1} & ... & \mathbf{x_n}
+    \end{pmatrix} \begin{pmatrix}
+        \lambda_1 & 0 & ... & 0 & ...\\
+        0 & \lambda_2 & ... & 0 & ...\\
+        \ &\ & . \\
+        \ &\ & \ & .\\
+        \ &\ & \ & \ &.\\
+        \ &\ & \ & \ & \ & \lambda_n\\
+    \end{pmatrix} = S\Lambda$
+\end{center}
+
+then we get $AS = S\Lambda$ which implies $S^{-1}AS = \Lambda$.
+\\
+There are some remarks about $\Lambda$
+
+\begin{itemize}
+    \item \textbf{Remark 1} if the eigenvalues $\lambda_1, ..., \lambda_n$ are all different. Then it is automatic that the eigenvectors $\mathbf{x_1, ..., x_n}$ are independent.\footnote{The reason is that, if we try to express 0, for example, and consider only two eigenvalues $\lambda_1, \lambda_2$ and also two eigenvectors $\mathbf{x_1, x_2}$. And we have $c_1\mathbf{x_1}+c_2\mathbf{x_2} = \mathbf{0}$, \textbf{multiplied by A} and \textbf{multiplied by $\lambda_2$}, we'll get $c_1\lambda_1\mathbf{x_1} + c_2\lambda_2\mathbf{x_2} = \mathbf{0}$ and $c_1\lambda_2\mathbf{x_1} + c_2\lambda_2\mathbf{x_2} = \mathbf{0}$, and then we get $c_1 = 0, c_2 = 0$, which means there is only one way to express \textbf{0}.} And any matrix with no repeated eigenvalues can be diagonalized.
+    \item \textbf{Remark 2} Some matrix with too few eigenvalues will make them undiagonalizable.
+    \item \textbf{Remark 3} The eigenvectors are not unique, in other words, one can multiply some \textit{nonzero} constant.
+\end{itemize}
+
+\end{document}

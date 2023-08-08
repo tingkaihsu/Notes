@@ -1,0 +1,516 @@
+\documentclass[12pt]{article}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{mathcomp}
+\usepackage{hyperref}
+\usepackage{bm,amsmath}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{indentfirst}
+\usepackage{bigints}
+\title{Classical Mechanics}
+\author{Ting-Kai Hsu}
+\date{2023/7/6}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Generalized Coordinates and Generalized Velocities}
+The number of \textbf{independent quantities}\footnote{which can uniquely described the position of any given system.} is called the number of \textbf{degree of freedom}. And in system with \textit{s} degrees of freedom, the independent quantities are called \textbf{generalized coordinates}, denoted as $q_i$, and the derivative of generalized coordinate $\dot{q_i}$. Then we should introduce an \textbf{experience law} which is worth studying, that is, it a system with generalized coordinates and generalized velocities simultaneously determined, then the state of the system would be \textbf{completely determined} and we'll be able to describe its motion.
+
+\section{Introduction to The Principle of Least Action}
+In this section, we'll see another way to derive \textbf{Lagrange's equation} with the \textit{principle of least action} or \textit{Hamilton's principle}, which governs the motion of mechanical system.
+And one must preview and know what is and the meaning of \textbf{calculus of variation}\footnote{recommandation: Feyman \textit{vol2 ch19}, and Gelfand \textit{Calculus of Variation}}
+The essence of calculus of variation is that \textbf{at minimum}, the deviation of the function is only \textit{second order} if the difference that we go away is in the \textit{first} order. In other word, we'd find out, in the first approximation, no difference at the minimum value.\footnote{A short proof is that if we assume at minimum, the approximation has \textit{first order} term. If we first move forward, we should assume the approximation become larger since we're at minimum; however, if we reverse the direction with the same ammount of difference, we'll get the \textit{first order} term becoming smaller, that is, the approximation become smaller when we move backward, which means we're not at the minimum at all.}
+
+\section{Notes on Reading Landau}
+
+At the end of section 2 in chapter 1\footnote{page 4}, Landau has mentioned that if we shift the Lagrangian $L$ by a \textbf{total time derivative of any function of coordinates and time}, that is,
+
+\begin{center}
+    \[L'(q, \dot{q}, t) = L(q, \dot{q}, t) + \frac{d}{dt}f(q, t)\]
+\end{center}
+
+There is two ways to prove it, by with the same core of concept. One use the least action principle and the other makes use of the equation of motion.
+\\
+\textbf{One:} first write out the action,
+
+\begin{center}
+    \[S' = \int_{t_1}^{t_2} L'(q, \dot{q}, t)\ dt = \int_{t_1}^{t_2} L(q, \dot{q}, t)\ dt + \int_{t_1}^{t_2} \frac{d}{dt}f(q, t)\ dt\]
+\end{center}
+
+As we can see, the rightest term of the eqaution can be rewritten as:
+
+\begin{center}
+    \[S' = \int_{t_1}^{t_2} L(q, \dot{q}, t) dt + f(q^{(2)}, t_2) - f(q^{(1)}, t_1)\]
+\end{center}
+
+Where $q^{(1)}$ is the initial position of the particle, and $q^{(2)}$ is its final position. Then we shall see that $f(q^{(2)}, t_2) - f(q^{(1)}, t_1)$ is constant which would be cancel when calculating the variation of $S$. Therefore, we can see that adding a \textbf{total time derivate of any function of generalized coordinates and time }wouldn't affect the equation of motion.
+\\\\
+\textbf{Second:}  Then we'd use another point of veiw to prove it, that is, we just take $L'$ directly into equation of motion and see if it doesn't change.
+
+\begin{center}
+    \[ \frac{d}{dt} \left( \frac{ \partial{(L + \frac{df}{dt})} }{\partial{\dot{q_j}}} \right) - \frac{ \partial{(L+\frac{df}{dt})} }{ \partial{q_j} } = 0 \]
+\end{center}
+
+To move on, however, we should  know the explicit of $\frac{df(q, t)}{dt}$, that is,
+
+\begin{center}
+    \[ \frac{df(q, t)}{dt} = \sum_{i} \frac{ \partial{f(q, t)} }{ \partial{q_i} }\dot{q_i} + \frac{ \partial{f(q, t)} }{ \partial{t} } \]
+\end{center}
+
+And we shall see the first term in equation of motion would become
+
+\begin{center}
+    \[ \frac{d}{dt} \left( \frac{ \partial{L} }{\partial{\dot{q_j}}} \right) + \frac{d}{dt} \left(\frac{ \partial{f(q, t)} }{ \partial{q_j} } \right) \]
+\end{center}
+
+and the second term would become
+
+\begin{center}
+    \[  \frac{ \partial{L} }{ \partial{q_j} } + \frac{ \partial }{ \partial{q_j} } \left( \frac{df(q,t)}{dt} \right) \]    
+\end{center}
+
+Because the total derivtive and partial derivative can change the order, so the second terms in above will cancel out. So the equation of motion would remain same.
+
+\section{Legendre Transformation \& Hamilton Formulation}
+When we try to describe the equations of motion by \textbf{generalized coordinates} $q$ and \textbf{generalized velocities} $\dot{q}$, these $2n$ independent parameters  and time $t$ form a special space called \textbf{configuation space}.
+On the other hand, we can also use the other parameter to describe the motion, in Hamilton formulation, we use \textbf{generalize coordinates $q$} and \textbf{canonical momentum $p$} to describe the space called \textbf{phase space}.
+\\
+The relation between these two spaces is that phase space is the cotangent bundle of the configuation space. In the following context, we shall see this is all about math thing, so watch out!
+First, cotangent bundle is related to a special and important term in mathmetics and physics, \textbf{manifold}. And we will go back to this topic later.
+\\
+To transform the configuation space to the phase space, we should introduce another useful tool called \textbf{Legendre transformation}.
+For instance, if there exists a function $f(x,y)$ that depends on x and y. We can write out its derivative.
+
+\begin{center}
+    \[ df = udx\ +\ vdy\]
+\end{center}
+
+Where $u = \frac{\partial{f}}{\partial{x}}$ and $ v = \frac{\partial{f}}{\partial{y}}$
+and if we want to change $(x, y)$ to $(u, y)$, then we can construct another fucntion $g$
+
+\begin{center}
+    \[ g = ux - f \]    
+\end{center}
+
+Then its differential form would become
+
+\begin{center}
+    \[dg = udx + xdu - df = udx + xdu - udx - vdy = xdu - vdy\]    
+\end{center}
+
+Therefore, we can see from the differential form that $g$ is a function of $y$ and $u$. And there is following relation
+
+\begin{center}
+    \[ x = \frac{\partial{g}}{\partial{u}} \] and \[ v = -\frac{\partial{g}}{\partial{y}}\]  
+\end{center}
+
+By this means, we cah construct a quantity that is a function of $q, p, t$. And the \textbf{generalized momentum} is defined as below
+
+\begin{center}
+    \[ p_j = \frac{\partial{L}}{\partial{\dot{q_j}}} \]
+\end{center}
+
+Notice that the above priori defining relationship \textit{form no part of Hamilton Formulation}, momenta is independent varialbe in Hamilton formulation.
+Then consider the differential form of Lagrangian $L(q, \dot{q}, t)$
+
+\begin{center}
+    \[ dL = \sum_{i}\frac{\partial{L}}{\partial{q_i}} dq_i + \sum_{i}\frac{ \partial{L} }{ \partial{\dot{q_i}} } d\dot{q_i} + \frac{\partial{L}}{\partial{t}} dt\]
+\end{center}
+
+By the definition of the generalized momentum, we could rewrite the above equation.
+
+\begin{center}
+    \[ dL = \sum_{i} \frac{ \partial{L} }{ \partial{q_i} }dq_i + \sum_{i} p_i d\dot{q_i} + \frac{ \partial{L} }{ \partial{t} }dt\]    
+\end{center}
+
+And we do the same thing as above procedure.
+
+\begin{center}
+    \[ H(q, p, t) = \dot{q}p - L\]
+\end{center}
+
+called \textbf{Hamilton}
+
+and its differential form would become 
+
+\begin{center}
+    \[ dH = \dot{q}dp + pd\dot{q} - dL = \dot{q}dp - \frac{ \partial{L} }{ \partial{q} } dq - \frac{ \partial{L} }{ \partial{t} } dt \]
+\end{center}
+
+By Lagrange equation, we can substitute the second coefficient.
+
+\begin{center}
+    \[ \frac{\partial{L}}{\partial{q}} - \frac{d}{dt} \left( \frac{ \partial{L} }{ \partial{\dot{q}} }\right)= 0 \]
+\end{center}
+
+Therefore, the differential form of the Hamilton would become
+
+\begin{center}
+    \[ dH = \dot{q} dp - \dot{p} dq - \frac{\partial{L}}{\partial{t}} dt\]
+    \[ = \frac{ \partial{H} }{ \partial{p} } dp + \frac{ \partial{H} }{ \partial{q} } dq + \frac{ \partial{H} }{ \partial{t} } dt\]
+\end{center}
+
+Compare each term and then we'd get \textbf{Hamilton equation of motion}
+
+\begin{center}
+    \[ \dot{q_i} = \frac{ \partial{H} }{ \partial{p_i} }\]
+    \[ \dot{p_i} = -\frac{ \partial{H} }{ \partial{q_i} }\]
+    \[ \frac{ \partial{H} }{ \partial{t} } = -\frac{ \partial{L} }{ \partial{t} }\]
+\end{center}
+
+Thus, there would be $2n+1$ \textbf{first order} differential equations.
+
+\section{Explict Form of Hamiltonian}
+First, let's consider applying transformation equation $\mathbf{r} = \mathbf{r}(q_1, ..., q_n; t)$ into kinetic energy $T$,
+
+\begin{center}
+    \[ T = \sum_i{\frac{1}{2}m_i v_{i}^2 = \sum_i{\frac{1}{2} m_i \dot{r}_{i}^2}} \]
+    \[ = \sum_i{\frac{1}{2} m_i \left( \sum_j{ \frac{\partial \mathbf{r_i}}{\partial q_j}d\dot{q}_i + \frac{\partial \mathbf{r_i}}{\partial t} }\right)^2} \]
+\end{center}
+
+Expanding the whole thing out, we'll get,
+
+\begin{center}
+    \[ T = M_0 + \sum_{j}{M_j\dot{q}_j} + \frac{1}{2}\sum_{j,\ k}{M_{jk}\dot{q}_j\dot{q}_k} \]
+\end{center}
+
+Where $M_0, M_j, M_{jk}$ are definite function of the $\mathbf{r}$'s and $t$ and hence of the $q$'s and $t$, that is, 
+
+\begin{center}
+    \[ M_0 = \sum_{i}{\frac{1}{2}m_i\left(\frac{\partial \mathbf{r}_i}{\partial t}\right)^2} \]
+    \[ M_j = \sum_{i}{m_i \frac{\partial \mathbf{r}_i}{\partial t} \cdot \frac{\partial \mathbf{r}_i}{\partial q_j}} \]
+    \[ M_{jk} = \sum_{i}{m_i \frac{\partial \mathbf{r}_i}{\partial q_j} \cdot \frac{\partial \mathbf{r}_i}{\partial q_k}} \] 
+\end{center}
+
+Thus, the kinetic enregy can always be writted as the sum of three homogeneous functions of the generalized velocities, $T = T_0 + T_1 + T_2$, where $T_0$ is independent of generalized velocities, $T_1$ is linear in the velocities, and $T_2$ is quadratic in the velocities.
+\\
+Simalarly, we can write the Lagrangian into,
+
+\begin{center}
+    \[ L(q, \dot{q}, t) = L_0(q_i, t) + L_1(q_i, t) \dot{q}_j + L_2(q_i, t)\dot{q}_j\dot{q}_k \]
+\end{center}
+
+Then Hamiltonian will become,
+
+\begin{center}
+    \[ H = \sum_i{\dot{q}_i p_i} - \left[ L_0(q_i, t) + \sum_{j}{L_1(q_i, t) \dot{q}_j} + \sum_{j,k}{L_2(q_i, t)\dot{q}_j\dot{q}_k}\right]\]
+\end{center}
+
+Following conditions would lead to a powerful conclusion,
+
+\begin{itemize}
+    \item The transformation between coordinates aren't the explict functions of time. Then the kinectic energy becomes $T = \frac{1}{2}\sum_{j, k}{M_{jk}\dot{q}_j\dot{q}_k}$.
+    \item The potential $V$ is generalized-velocities-independent potential.
+\end{itemize}
+
+When these two conditions, we can conclude that,
+\begin{center}
+    \[ \sum_{j, k}{L_2\dot{q}_j\dot{q}_k} = T \]
+    \[ \sum_{j}{L_1\dot{q}_j} = 0 \]
+    \[ L_0 = -V \]
+\end{center} 
+
+And then we consider $\sum{\dot{q}p} = \sum{\dot{q}\frac{\partial L}{\partial \dot{q}}}$, then,
+
+\begin{center}
+    \[ \sum_{j}{\dot{q}_jp_j} = \sum_{j}{\dot{q}_j \frac{\partial L}{\partial \dot{q}_j}} = 0 + \sum_{j}{L_1\dot{q}_j} + 2 \sum_{j, k}{L_2 \dot{q}_j\dot{q}_k} \]
+    Then,
+    \[ H = 2T + V - T = V + T = E \]
+\end{center}
+
+Therefore, we know under these two conditions, we have the Hamiltonian is the total energy of the system.
+\\
+\indent Next, we can consider another special case that may be confused with the above discussion about total energy of a system. When Lagrangian isn't explict function of time, then automatically Hamiltonian isn't the explict function of time, too. Below gives the reason,
+
+\begin{center}
+    \[ \frac{dH}{dt} = \sum_{i}{\frac{\partial H}{\partial q_i}\dot{q}_i} + \sum_{i}{\frac{\partial H}{\partial p_i}\dot{p}_i} + \frac{\partial H}{\partial t} = \frac{\partial H}{\partial t} \]
+    \[ = -\frac{\partial L}{\partial t} = 0 \]
+\end{center}
+
+The first two terms will cancel because of Hamilton's equation.
+Then, we can conclude that if Lagrangian isn't explict function of time, then \textbf{Hamiltonian is a constant of time}.
+\\
+\indent Second, we should continuely derive the explict form of Hamiltonian. First, we should change the look of Lagrangian,
+
+\begin{center}
+    \[ L(q_i, \dot{q}_i, t) = L_0(q_i,t) + \dot{q}_i\ a_i(q_i, t) + \frac{1}{2}\dot{q}_i\dot{q}_j\ T_{ij}(q_i, t) \]
+\end{center}
+
+Where the subscript $\dot{q}_i$ that aren't in the function means summing up, that is,
+
+\begin{center}
+    \[ \dot{q}_i\ a_i(q_i, t) = \sum_{j}{\dot{q}_j\ a_j(q_i, t)} \]
+\end{center}
+
+For more, please refer to \textbf{Einstein notation convention}.
+
+If we write Lagrangian in symplectic form, as below,
+
+\begin{center}
+    \[ L = L_0 + \mathbf{\dot{q}}^T \mathbf{a} + \frac{1}{2}\mathbf{\dot{q}}^T \mathbf{T} \mathbf{\dot{q}} \]
+\end{center}
+
+Where the single row matrix $\mathbf{\dot{q}}^T$ is the transpose of a single column matrix $\mathbf{\dot{q}}$, and $\mathbf{a}$ is a column matrix, and $\mathbf{T}$ is square $n \times n$ matrix.
+Simalarly, the Hamiltonian can be written as 
+
+\begin{center}
+    \[ H = \mathbf{\dot{q}}^T\mathbf{p} - L = \mathbf{\dot{q}}^T(\mathbf{p} - \mathbf{a}) - \frac{1}{2}\mathbf{\dot{q}}^T\mathbf{T}\mathbf{\dot{q}} \]
+\end{center}
+
+By the definition of the transverse momentum, we have,
+
+\begin{center}
+    \[ \mathbf{p} = \mathbf{T\dot{q}} + \mathbf{a} \]
+    then we have,
+    \[ \mathbf{\dot{q}} = \mathbf{T}^{-1}(\mathbf{p-a}) \]
+    \[ \mathbf{\dot{q}}^T = (\mathbf{p}^T - \mathbf{a}^T)\mathbf{T}^{-1} \]
+\end{center}
+
+As we know, in Hamilton formulation, Hamiltonian should be described by generalized coordinates, canonical momentum, and time,
+
+\begin{center}
+    \[ H = \frac{1}{2}(\mathbf{p}^T - \mathbf{a}^T) \mathbf{T}^{-1} (\mathbf{p} - \mathbf{a}) - L_0(q_i, t) \]
+\end{center}
+
+\section{Symplectic Form of Hamilton's Equation of Motion}
+
+Again, we try to write out the symplectic form of Hamilton's equation of motion,
+
+\begin{center}
+    \[ \dot{q}_i = \frac{\partial H}{\partial p_i} \]
+    \[ \dot{p}_i = -\frac{\partial H}{\partial q_i}\]
+\end{center}
+
+If we assign $q_i$ and $p_i$ altogether into a column vector $\pmb{\eta}$ with $2n$ elements, and,
+
+\begin{center}
+    \[ \pmb{\eta} = \begin{bmatrix}
+        q_1\\
+        ...\\
+        q_n\\
+        p_1\\
+        ...\\
+        p_n\\
+    \end{bmatrix}\]
+\end{center}
+
+In other words, $\eta_1$ to $\eta_n$ are generalized coordinates $q_i$, and $\eta_{n+1}$ to $\eta_{2n}$ are the canonical momentum $p_{i}$. And then Hamilton's equation of motion would become,
+
+\begin{center}
+    \[ \dot{\pmb{\eta}} = \pmb{J}\frac{\partial H}{\partial \pmb{\eta}}\]
+\end{center}
+
+Where the $2n \times 2n$ square matrix $\pmb{J}$ is a special matrix,
+
+\begin{center}
+    \[ \pmb{J} = \begin{bmatrix}
+        \pmb{0} & \pmb{1}\\
+        \pmb{-1} & \pmb{0}\\
+    \end{bmatrix}\]
+\end{center}
+
+Take 2 variables for instance, we have,
+
+\begin{center}
+    \[ \begin{bmatrix}
+        \dot{q}_1\\
+        \dot{q}_2\\
+        \dot{p}_1\\
+        \dot{p}_2\\
+    \end{bmatrix} = \begin{bmatrix}
+        0 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1\\
+        -1 & 0 & 0 & 0\\
+        0 & -1 & 0 & 0\\
+    \end{bmatrix} \begin{bmatrix}
+        \frac{\partial H}{\partial q_1}\\\\
+        \frac{\partial H}{\partial q_2}\\\\
+        \frac{\partial H}{\partial p_1}\\\\
+        \frac{\partial H}{\partial p_2}\\
+    \end{bmatrix} \]
+\end{center}
+
+By Hamilton's equation of motion, 
+
+\begin{center}
+    \[ \begin{bmatrix}
+        \dot{q}_1\\
+        \dot{q}_2\\
+        \dot{p}_1\\
+        \dot{p}_2\\
+    \end{bmatrix} = \begin{bmatrix}
+        0 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1\\
+        -1 & 0 & 0 & 0\\
+        0 & -1 & 0 & 0\\
+    \end{bmatrix} \begin{bmatrix}
+        -\dot{p_1}\\
+        -\dot{p_2}\\
+        q_1\\
+        q_2\\
+    \end{bmatrix} \]
+\end{center}
+
+\begin{center}
+    \[ \dot{\pmb{\eta}} = \pmb{J}\frac{\partial H}{\partial \pmb{\eta}} \]
+\end{center}
+
+\section{Routhian}
+
+Then we should talk about the \textbf{cyclic coordinate} in Hamilton foromulation. As we already knew, if a coordinate is cyclic, say is $q_n$, the Lagrangian can be written as 
+
+\begin{center}
+    \[ L(q_1, q_2, ... q_{n-1}; \dot{q_i}; t) \]
+\end{center}
+
+Note that all generalized velocities still occur in Lagrangian, including $\dot{q_n}$. On the other hand, in Hamilton formulation, if we have $q_n$ be cyclic, then by the Hamilton's equation of motion,
+
+\begin{center}
+    \[ \dot{p_n} = - \frac{\partial H}{\partial q_n}  = 0 \]
+\end{center}
+
+That is, $p_n$ becomes the constant of time, say is $\alpha$. Then the form of Hamiltonian will be,
+
+\begin{center}
+    \[ H(q_1, ..., q_{n-1};\ p_1, ..., p_{n-1};\ \alpha;\ t) \]
+\end{center}
+
+The behavior of the cyclic coordinate itself with time is then found by integrating the equation of motion,
+
+\begin{center}
+    \[ \dot{q_n} = \frac{\partial H}{\partial \alpha} \]
+\end{center}
+
+By the properties shown by the Hamiltonian with cyclic coordinates, we can use it with Lagrangian with non-cyclic coordinates, and this way is designed by Routh. Precisely, we have the Routhian $R(q; p; \xi; \dot{\xi}; t)$, and $\xi$ denote the non-cyclic generalized coordinates, and $q$ denote the cyclic coordinates.
+If we define the Routhian to be
+
+\begin{center}
+    \[ R = \sum{\dot{q}p} - L(q; \xi; \dot{q}; \dot{\xi}; t) \]
+    Which can be rewritten as 
+    \[ R(q;p;\xi;\dot{\xi};t) = \sum{\dot{q}p} - L_{cyclic}(q;\dot{q};t) - L_{non-cyclic}(\xi;\dot{\xi};t) \]
+    \[ = H_{cyclic}(q;p;t) - L_{non-cyclic}(\xi;\dot{\xi};t) \]
+\end{center}
+
+For non-cyclic coordinates, we have the Lagrange's equation,
+
+\begin{center}
+    \[ \frac{d}{dt} \left( \frac{\partial R}{\partial \dot{\xi}} \right) - \frac{\partial R}{\partial \xi} = 0 \]
+\end{center}
+
+As for the cyclic coordinates, we have the Hamilton's equation,
+
+\begin{center}
+    \[ \dot{p} = -\frac{\partial R}{\partial q} = 0\]
+    \[ \dot{q} = \frac{\partial R}{\partial p}\]
+\end{center}
+
+In conclusion, Routhian may help solving some physical and engineering problems, and it combines some of the features of both the Lagrangian and the Hamiltonian pictures. However, it adds no new thing to the physics.
+
+A formal way to deriving Routhian is as shown below.
+If we try to change the coordinates from $(q, \xi, \dot{q}, \dot{\xi}, t)$ to $(q, \xi, p, \dot{\xi}, t)$, first we consider the differential form of the Lagrangian $L(q, \xi, \dot{q}, \dot{\xi}, t)$,
+
+\begin{center}
+    \[ dL = \sum{\frac{\partial L}{\partial q} dq} + \sum{\frac{\partial L}{\partial \dot{q}} d\dot{q}} + \sum{\frac{\partial L}{\partial \xi} d\xi} + \sum{\frac{\partial L}{\partial \dot{\xi}} d\xi} + \frac{\partial L}{\partial t}dt \]
+\end{center}
+
+Then we consider,
+
+\begin{center}
+    \[ R = \sum{\dot{q}p} - L \]
+\end{center}
+
+and its differential form would be,
+
+\begin{center}
+    \[ dR = \sum{pd\dot{q}} + \sum{\dot{q}dp} - \left(\sum{\frac{\partial L}{\partial q} dq} + \sum{\frac{\partial L}{\partial \dot{q}} d\dot{q}} + \sum{\frac{\partial L}{\partial \xi} d\xi} + \sum{\frac{\partial L}{\partial \dot{\xi}} d\xi} + \frac{\partial L}{\partial t}dt \right) \]
+    \[ dR = \sum{\dot{q}dp} - \sum{\dot{p}dq} - \sum{\frac{\partial L}{\partial \xi}d\xi} - \sum{\frac{\partial L}{\partial \dot{\xi}}d\dot{\xi}} - \frac{\partial L}{\partial t}dt \]
+    which shows that,
+    \[ \frac{\partial R}{\partial p} = \dot{q} \]
+    \[ \frac{\partial R}{\partial q} = - \dot{p} \]\\
+    \[ \frac{\partial R}{\partial \xi} = -\frac{\partial L}{\partial \xi} \]
+    \[ \frac{\partial R}{\partial \dot{\xi}} = - \frac{\partial L}{\partial \dot{\xi}} \]
+\end{center}
+
+The first two equations imply that Routhian conforms to Hamilton's equation with generalized coordinates $q$, on the other hand, the last two equations imply Routhian conforms to Lagrange's equation with generalized coordinates $\xi$. If the generalized coordinates $q$ are cyclic, and $\xi$ isn't, then the dicussion would be like above.
+
+\section{Hamilton's Equations From Variation Principle}
+
+In this section, we're going to derive Hamilton's equation of motion from variation principle. The action can be rewritten as,
+
+\begin{center}
+    \[ \delta S = \int_{t_1}^{t_2}  L(q, \dot{q}, t) \,dt = \int_{t_1}^{t_2} \sum{\dot{q}p} - H(q, p, t) \,dt \]
+\end{center}
+
+When we consider more generally, we can view the integrand as a function of generalized coordinates and canonical momentum,
+
+\begin{center}
+    \[ \delta S = \int_{t_1}^{t_2} f(q, \dot{q}, p, \dot{p}, t) \,dt \]
+\end{center}
+
+Roughly speaking, we'll get $2n$ Euler-Lagrange's equation,
+
+\begin{center}
+    \[ \frac{d}{dt} \left(\frac{\partial f}{\partial \dot{q}_i}\right)  - \frac{\partial f}{\partial q_i} = 0 \]
+    \[ \frac{d}{dt} \left(\frac{\partial f}{\partial \dot{p}_i}\right)  - \frac{\partial f}{\partial p_i} = 0 \]
+\end{center}
+
+In our case, there isn't $\dot{p}$ in $f$, and the above equations would become,
+
+\begin{center}
+    \[ \dot{p}_i - \frac{\partial H}{\partial q_i} = 0 \]
+    \[ 0 - \left( \dot{q}_i - \frac{\partial H}{\partial p} \right) = 0 \]
+\end{center}
+
+Which are exacly Hamilton's equation of motion.
+
+\section{Canonical Transformation}
+
+The equal status accorded to coordinates and momenta as independent variables encourages a greater freedom in selecting the pyhsical quantities to be designated as "coordinates" and "momenta". In this section, we'll focus on how to transform from one set of varialbes to another set of variables. First, we shall introduce the most trivial one, \textit{point transformation},
+\\
+Let $q_1, ..., q_n$ be a set of independent generalized coordinates for a system of $n$ degrees of freedom, with a Lagrangian $L(q, \dot{q}, t)$. Suppose we transform to another set of independent coordinates $s_1, ..., s_n$ by means of transformation equations
+
+\begin{center}
+    \[ q_i = q_i(s_1, ... ,s_n, t),\ \  i = 1, ... ,n \]
+\end{center}
+
+Show that the form of Lagrange's equations is invariant under a point transformation.
+\\
+\indent \textbf{Proof } Our goal is to get,
+
+\begin{center}
+    \[ \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{s_i}} \right) - \frac{\partial L}{\partial s_i} = 0 \]
+\end{center}
+
+By chain rule, we have,
+
+\begin{center}
+    \[ \frac{\partial L}{\partial s_i} = \frac{\partial L}{\partial q_i}\frac{\partial q_i}{\partial s_i} \]
+    and the expansion of $\dot{q}_i(s_i, t)$
+    \[ \dot{q}_i = \sum_{j}{\frac{\partial q_i}{\partial s_j} \dot{s}_j} + \frac{\partial q_i}{\partial t} \]
+    \[ \frac{\partial L}{\partial \dot{s}_i} = \frac{\partial L}{\partial \dot{q_i}} \frac{\partial \dot{q_i}}{\partial \dot{s_i}} = \frac{\partial L}{\partial \dot{q_i}} \frac{\partial q_i}{\partial s_i} \]
+\end{center}
+
+And then if the original Lagrange's equation of motion times $\frac{\partial q_i}{\partial s_i}$, we will get our goal.
+\\
+From the above example, we can see what we expect from the transformation is that it has to maintain the equation of motion. In Hamilton formulation, the momenta are also independent variables on the same level as the generalized coordinates, so the concept of transformation must be widened. The simultaneous transformation from original coordinates and momenta $q_i, p_i$ to the new ones $Q_i, P_i$ with the following \textbf{invertible transformation equations},
+
+\begin{center}
+    \[ Q_i = Q_i(q, p, t) \]
+    \[ P_i = P_i(q, p, t) \]
+\end{center}
+
+Note that not all the transformations are of interested. New $Q, P$ must be canonical coordinates, which requires that there is function $K(Q, P, t)$ such that Hamilton's equations of motion in the new set are satisfied.
+
+\begin{center}
+    \[ \dot{P}_i = \frac{\partial K}{\partial Q_i} \]
+    \[ \dot{Q}_i = - \frac{\partial K}{\partial P_i} \]
+\end{center}
+
+Function $K$ plays the role of Hamiltonian in the new set, called \textit{transformed Hamiltonian}. Note that 
+\end{document}

@@ -1,0 +1,160 @@
+\documentclass[12pt]{article}
+\usepackage{indentfirst}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{mathcomp}
+\usepackage{hyperref}
+\usepackage{bm,amsmath}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{bigints}
+\title{Title}
+\author{Ting-Kai Hsu}
+\date{Date}
+
+\begin{document}
+
+\section{Introduction}
+
+First, we shall introduction the two assumptions from Einstein as below:
+
+\begin{itemize}
+    \item The laws of physics are preserved for all observers in inertial frame of reference relative to one another. (law of relativity)
+    \item The speed of light in vacuum is the same for all observers regardless of their motion.
+\end{itemize}
+
+In relativity, we know that there is no more difference between space and time, and we call them altogether as \textit{spacetime}. And we define the spacetime difference between two points is 
+
+\begin{center}
+    \[ (\Delta s)^2 = c^2(time\ interval)^2 - (space\ interval)^2\]
+    and if we write out small displacement, we'll get
+    \[ (ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) \]
+\end{center}
+
+The value of $ds$ will determine the properties of the interval. For instance, when the object is moving in the speed that is slower than that of the light, then $(ds)^2 > 0$ and thus we call the interval is \textit{timelike}; and when $(ds)^2 < 0$ we would call the interval \textit{spacelike}; when $(ds)^2 = 0$, we call it \textit{lightlike}. What is the difference and physical meaning behind this seperation?
+\\
+\indent
+First, if the distance between two events is \textit{timelike}, that is, $(ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) > 0$, $dt$ cannot be $0$, physically, we say that these two events cannot happen \textbf{at the same time} but can happen \textbf{at the same place}.
+\\
+\indent
+Second, if the distance between two events is \textit{spacelike}, that is, $(ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) < 0$, $dt$ can be $0$ this time and there must be space interval between these events, in other words, these two events can only happen \textbf{at the same time} but not \textbf{at the same place}.
+\\
+\indent
+Lastly, if the distance betwween two events is \textit{lightlike}, that is, $(ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) = 0$, we say light can travel between these two events.
+\\
+\indent
+Since the spacetime interval is the geometric properties of events or objects, its value should be preserved in all inertial frame, in other words, $(ds)^2$ is an invariant quantity called \textbf{invariant spacetime interval}. Because in relativity, the concept of time is no longer be seen as an independent varialbe that together with coordinates describe the motion of objects. However, we're eager to find a new concept that makes things easier, so we define a new concept about time, that is, \textbf{proper time}. The meaning of the proper time is that it can be seen as the motion of object has been measureed in \textbf{rest frame}, in other words, we can always choose an inertial frame that the object is at rest in it, and then we call the time in this rest time \textbf{proper time}.
+Now assume an object moving with velocity \textbf{v}, and the proper time is denoted as $\tau$
+\begin{center}
+    \[ (ds)^2 = (ds')^2 \]
+    \[ c^2(d\tau)^2 = c^2(dt)^2 - (vdt)^2 \]
+\end{center}
+
+And then we'll have 
+
+\begin{center}
+    \[d\tau = dt \sqrt{1 - \frac{v^2}{c^2}} = \frac{1}{\gamma} dt \]
+\end{center}
+
+\section{Vectors and the Metric Tensor}
+
+In relativity, we use a special notaion to express the operation in this study. For instance, we would view time and position coordinates as same thing, and denote them as $x^{\mu}$, where $x^0 = ct$ is the time coordinate, and $x^1, x^2, x^3$ are the space coordinates. 
+And if we consider time together with our position coordinates, then we shall define two different \textbf{vectors} that are useful to us.
+
+\begin{itemize}
+    \item covariant vector: $\mathbf{x^{\mu}} = <x^0, x^1, x^2, x^3> = <ct, x, y, z>$
+    \item contravariant vector: $\mathbf{x_{\mu}} = <x^0, -x^1, -x^2, -x^3> = <ct, -x, -y, -z>$
+\end{itemize}
+
+The transform between them can be achieved by introducing a special tensor called \textbf{Minkowski tensor}, one can adapt +- - - or -+++ convention as one prefer, here we pick the first one. 
+
+\begin{center}
+    \[ \eta_{\mu \nu} = 
+    \begin{pmatrix}
+        1&0&0&0\\
+        0&-1&0&0\\
+        0&0&-1&0\\
+        0&0&0&-1\\
+    \end{pmatrix} \]
+\end{center}
+
+\begin{center}
+    \[ \mathbf{x_{\mu}} = \eta_{\mu \nu} \mathbf{x^{\nu}} \]
+\end{center}
+
+Conversely, the inverse relationship is as below:
+
+\begin{center}
+    \[ \eta^{\mu \nu} = (\eta_{\mu \nu})^{-1}\]
+    \[ \mathbf{x^{\mu}} = \eta^{\mu \nu} \mathbf{x_{\nu}} \]
+\end{center}
+
+\section{Action}
+
+First, we consider the motion of \textbf{free particle} so that the potential is not in our discussion. In relativity, time $t$ should be considered in the generalized coordinates, that is, time $t$ become the $n+1$ th coordinate $q_{n+1}$. The action should be scalar (invariant) and the natural choice of the invariant parameter may be the \textbf{proper time of the particle} $\tau$. However, we know that the action should involve generalized coordinate and generalized velocities, and the component of the generalized velocities would obey the following relation,
+
+\begin{center}
+    \[ u \cdot u = u^{\nu} u_{\nu} = c^2 \]
+\end{center}
+ 
+which is the constraint that makes the generalized velocities dependent.
+Therefore, we must choose another invariant parameter. Suppose we pick an arbitrary invariant parameter $\theta$, and the generalized velocities is defined as below
+
+\begin{center}
+    \[ x'^{\nu} \equiv \frac{d x^{\nu}}{d \theta}\]
+\end{center}
+
+Then Hamilton principle can be written as 
+
+\begin{center}
+    \[ \delta S = \int_{\theta_1}^{\theta_2} \Lambda (x^{\nu}, x'^{\nu}) \,d\theta \]
+\end{center}
+
+And the Lagrange's equation would become
+
+\begin{center}
+    \[ \frac{d}{d \theta} \left( \frac{\partial \Lambda}{\partial x'^{\mu}} \right) - \frac{\partial \Lambda}{\partial x^{\mu}} = 0 \]
+\end{center}
+Where the Lagrange fuction $\Lambda$ is the world scalar(invariant).
+We should try to make connection between the invariant Lagrange function $\Lambda$ and the previous Lagrange fuction $L$. One way is to change the orignal parameter time $t$ to the invariant parameter.
+
+\begin{center}
+    \[ \dot{x}^{\mu} = \frac{dx^{\mu}}{dt} = c\frac{dx^{\mu}}{d\theta} \frac{d\theta}{dct} = c\frac{x'^{\mu}}{x'^{0}} \]
+    \[ \delta S = \int_{t_1}^{t_2} L (x, \dot{x}, t) \,dt = \int_{\theta_1}^{\theta_2} L( x^{\mu}, c\frac{x'^{\mu}}{x'^{0}} )\ \frac{x'^{0}}{c} \, d\theta \]
+\end{center}
+
+Compare with the action we have mentioned previously in this section, we should have
+
+\begin{center}
+    \[ \Lambda(x^{\mu}, x'^{\mu}) = \frac{x'^{0}}{c} L(x^{\mu}, c\frac{x'^{\mu}}{x'^{0}}) \]
+\end{center}
+
+We could discuss much deeper into this transformation. First, we know that the light speed is not so important and can be set to 1 if we change the units.
+$x'^0$ is the derivative of time $t$ with respect to the invariant parameter $\theta$. Since we haven't find out the physical meaning of this invariant parameter, we're not able to discuss the physical meaning of the new Lagrangian here; however, we know that this equation is caused by considering time $t$ as the $n+1$ th of the gerneralized parameter rather than an independent parameter. Yet, there are some mathemetic properties and consequence that we'd be interested in. First, consider scalar transformation, that is, $\Lambda(x^{\mu}, x'^{\mu}) \rightarrow \Lambda(x^{\mu}, \alpha x'^{\mu})$. And then the most beautiful thing happens, by the transformation equation above
+
+\begin{center}
+    \[ \Lambda(x^{\mu}, \alpha x'^{\mu}) = \frac{\alpha x'^0}{c} L(x^{\mu}, c\frac{\alpha x'^{\mu}}{\alpha x'^0}) = \alpha \frac{x'^0}{c} L(x^{\mu}, c\frac{x'^{\mu}}{x'^0}) \]
+\end{center}
+
+Which is exacly equal to the orignal relativistic Lagrangian multiplied by a scalar, that is, $\alpha \Lambda(x^{\mu}, x'^{\mu})$. From this powerful properties, we can see that the relativistic Lagrangian is a homogeneous function of the generalized velocities in the first degree. It follows from Euler's theorem on homogeneous functions
+
+\begin{center}
+    \[ \Lambda = x'^{\mu} \frac{\partial \Lambda}{\partial x'^{\mu}} \]
+\end{center}
+
+And because of this properties, we'd have the following equation holds
+
+\begin{center}
+    \[ \left[\frac{d}{d \theta} \left( \frac{\partial \Lambda}{\partial x'^{\mu}} \right) - \frac{\partial \Lambda}{\partial x^{\mu}} \right] x'^{\mu} = 0 \]
+\end{center}
+
+The proof is as below
+
+\begin{center}
+    
+\end{center}
+\end{document}
