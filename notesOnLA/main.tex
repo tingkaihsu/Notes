@@ -10,16 +10,39 @@
 \usepackage{bm, amsmath}
 \usepackage{float}
 \usepackage{minted}
+\usepackage{indentfirst}
 \title{Title}
 \author{Ting-Kai Hsu}
 \date{Date}
 
 \begin{document}
+
+\section{Transpose}
+
+Transpose can be seen as the behavior of a linear system, that is to say, it contains the properties of linearity. The definition of transpose is as below,
+\\
+\indent For an arbitrary $n \times m$ matrix $A$\footnote{with $n$ rows and $m$ columns.}, the transpose of $A$ is,
+
+\begin{center}
+    \[ A \longrightarrow A^T = B \]
+\end{center}
+
+Where,
+
+\begin{center}
+    \[ a_{i, j} = b_{j, i}\ ,\ \ for\ i = 1, ..., n; j = 1, ..., m \]
+\end{center}
+
+By this definition, we see that $A^T = B$ is a $m \times n$ matrix, and simply put, \textbf{the rows become columns, and the columns become rows}.
+
 \section{Eigenvalues and Eigenvectors}
+
 Eigenvalues are useful when we want to find out the \textbf{powers of matrix}. First, we shall talk about what is \textbf{Eigenvectors}, it is origined from a concept that \textbf{almost every vector will change its direction after the matrix A acting on them.} However, there are some vectors that wouldn't change their direction, that is,
+
 \begin{center}
     $A\mathbf{x} = \lambda \mathbf{x}$
 \end{center}
+
 Where $\lambda$ is a real number(or a comple number).
 And we call $\lambda$ A's \textbf{eigenvalue} and \textbf{x} A's \textbf{eigenvector}.
 \\

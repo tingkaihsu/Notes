@@ -512,5 +512,51 @@ Note that not all the transformations are of interested. New $Q, P$ must be cano
     \[ \dot{Q}_i = - \frac{\partial K}{\partial P_i} \]
 \end{center}
 
-Function $K$ plays the role of Hamiltonian in the new set, called \textit{transformed Hamiltonian}. Note that 
+Function $K$ plays the role of Hamiltonian in the new set, called \textit{transformed Hamiltonian}. Note that the transformation considered be \textbf{problem-independent}, in other words, the new coordinates set $(Q,P)$ must be canonical coordinates for all systems with the same degrees of freedom.
+\\
+How to define canonical coordinates? They must follow Hamilton's principle, that is,
+
+\begin{center}
+    \[ \delta \int_{t_1}^{t_2} \left( P_i\dot{Q}_i - K(Q_i, P_i, t) \right) \, dt = 0 \]
+\end{center}
+
+On the other hand, the old one should satisfy, 
+
+\begin{center}
+    \[ \delta \int_{t_1}^{t_2} \left( p_i\dot{q}_i - H(q_i, p_i, t) \right) \, dt = 0 \]
+\end{center}
+
+The above equations don't inply that their integrand should be the same, however, they do follow the following relation,
+
+\begin{center}
+    \[ \lambda \left(p_i\dot{q}_i - H(q_i, p_i, t) \right) = P_i\dot{Q}_i - K(Q_i, P_i, t) + \frac{dF}{dt} \]
+\end{center}
+
+As we have mention in previous section, the last term $\frac{dF}{dt}$ is the trivial term \footnote{In fact, it plays a important role as we'll mention later} which doesn't affect the equation of motion. One must note that the funciton $F$ would be the funciton of $q_i, p_i$ or $P_i, Q_i$, but not the function of $\dot{q}_i, \dot{p}_i, \dot{Q}_i$ and so on, as we have prove before. And $\lambda$ is the constant independent of time and the canonical coordinates.
+\\
+\indent In convention, we often assume that $\lambda = 1$, and we must make sure we can always do this assumption. Therefore, we need to consider a transformation related to $\lambda$, \textit{scale transformation}. Consider the following transformation, 
+
+\begin{center}
+    \[ Q_i = \mu q_i,\ \ \ P_i = \nu p_i \]
+\end{center}
+
+Take into Hamilton's equations of motion in the new set are satisfied,
+
+\begin{center}
+    \[ \dot{P}_i = \frac{\partial K}{\partial Q_i},\ \ \dot{Q}_i = - \frac{\partial K}{\partial P_i} \]
+    \[ \nu p_i = \frac{1}{\mu} \frac{\partial K}{\partial q_i},\ \ \mu \dot{q}_i = -\frac{1}{\nu} \frac{\partial K}{\partial p_i} \]
+\end{center}
+
+We may find out that $K = \mu \nu H$, and then,
+
+\begin{center}
+    \[ \mu \nu \left[ p_i\dot{q}_i - H(q_i, p_i, t) \right] = P_i\dot{Q}_i - K(Q_i, P_i, t) \]
+\end{center}
+
+Hence, $\lambda = \mu \nu$, and we can always find a possible \textit{scale transformation} so that we should put emphases on,
+
+\begin{center}
+    \[ p_i\dot{q}_i - H(q_i, p_i, t) = P_i\dot{Q}_i - K(Q_i, P_i, t) + \frac{dF}{dt} \]
+\end{center}
+
 \end{document}

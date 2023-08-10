@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1689063707 "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" "main.pdf" "main" 1689063707
-  "/dev/null" 1689046303 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1691646474 "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" "main.pdf" "main" 1691646475
+  "/dev/null" 1691644952 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1687783907 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" 1689063707 7130 3191159f56cc09f5c4fe45a228101f95 ""
+  "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" 1691646474 7776 22866f5bbf7b90c4d63e3a3372d23305 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -155,6 +155,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575674187 9715 b051d5b493d9fe5f4bc251462d039e5f ""
   "/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty" 1622581934 13197 df0fe9a9695763546b59e02a008447b3 ""
   "/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty" 1622581934 10214 00ce62e730d0cfe22b35e8f1c84949c7 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty" 1622581934 1618 786b14c5a3e144c3a51452d08232d18b ""
   "/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty" 1622581934 4118 0f286eca74ee36b7743ff20320e5479f ""
   "/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty" 1334873510 1048 517e01cde97c1c0baf72e69d43aa5a2e ""
   "/usr/share/texlive/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
@@ -165,9 +166,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1688010230 4073795 a82a847ac97773bf4a607ab050efa3a1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1688010234 1435896 8bc8cb4ca76f4ba8930a3231f93abd8c ""
-  "main.aux" 1689063707 1108 120942770723aec0fd1f9041847e97df "pdflatex"
-  "main.out" 1689063707 629 a1bd90e4902117fbcde9099ada723c50 "pdflatex"
-  "main.tex" 1689063707 7130 3191159f56cc09f5c4fe45a228101f95 ""
+  "main.aux" 1691646475 1214 c9ea469e072ceacde364826abcb060dc "pdflatex"
+  "main.out" 1691646475 717 cd68c1cc3b1d4e0c124d842e1215b875 "pdflatex"
+  "main.tex" 1691646474 7776 22866f5bbf7b90c4d63e3a3372d23305 ""
   (generated)
   "main.aux"
   "main.log"
