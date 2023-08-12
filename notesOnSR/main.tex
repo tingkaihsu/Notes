@@ -229,5 +229,48 @@ In this section, we'll going to prove that Lorentz transformation forms a group 
     \item \textbf{Inverse}, for all elements in group, there is an \textbf{inverse} such that the product of element and its inverse will equal to identity. \[ \Lambda^{-1} \in G,\ \ s.t.\ \Lambda \Lambda^{-1} = I \]
 \end{itemize}
 
+Then we should prove the existence of Lorentz group $G = \left\{ \Lambda_1, \Lambda_2, ...\right\}$. Note that we have a very useful equation $\Lambda^T \eta \Lambda = \eta$. First, \textbf{Closure}.
 
+\begin{center}
+    \[ \Lambda_1^T \eta \Lambda_1 = \eta,\ \ \Lambda^T_2 \eta \Lambda_2 = \eta \]
+    consider
+    \[ \left(\Lambda_1 \Lambda_2\right)^T \eta\ \Lambda_1 \Lambda_2 = \Lambda_2^T \Lambda_1^T \eta \Lambda_1 \Lambda_2 \]
+    \[ = \eta \]
+\end{center}
+
+Then we can see that $\Lambda_1\Lambda_2 \in G$.
+\\
+\indent Second, \textbf{Associativity}, we can see that Lorentz transformation can be expressed in matrix form. Also, the associativity can be applied on matrix product, so we automatically have the associativity in Lorentz transformation.
+\\
+\indent Third, \textbf{Identity}. We merely have to prove that \textbf{identity} $I$ in Lorentz group, that is,
+
+\begin{center}
+    \[ I = \begin{bmatrix}
+        1&0&0&0\\
+        0&1&0&0\\
+        0&0&1&0\\
+        0&0&0&1\\
+    \end{bmatrix} \]
+    \[ I^T \eta I = \eta \]
+\end{center}
+
+Hence, $I \in G$.
+\\
+\indent Last, \textbf{Inverse}. To prove that Lorentz transformation has inverse, we merely need to prove that its determinant is not $0$ just like we have to do when we want to prove the matrice have inverse. Moreover, we'll better find the explict form of inverse. Again, we should use the equation $\Lambda \eta \Lambda = \eta$
+
+\begin{center}
+    \[ \det\left(\Lambda^T \eta \Lambda\right) = \det(\eta) \]
+    we have,
+    \[ \det\left(\Lambda^T\right) = \det\left(\Lambda\right)\]
+    Then,
+    \[ \det\left(\Lambda\right)^2\det(\eta) = \det(\eta) \]
+\end{center}
+
+And we have $\eta$ is an invertible matrix so that $\det(\eta) \ne 0$, or one can compute it explictly. Then,
+
+\begin{center}
+    \[ \det\left(\Lambda\right) = \pm 1 \]
+\end{center}
+
+Hence, \textbf{Inverse} holds, and Lorentz transformation form Lorentz group.
 \end{document}
