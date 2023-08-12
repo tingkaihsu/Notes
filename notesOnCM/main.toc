@@ -1,9 +1,10 @@
-\contentsline {section}{\numberline {1}Generalized Coordinates and Generalized Velocities}{1}{section.1}%
+\contentsline {section}{\numberline {1}Generalized Coordinates and Generalized Velocities}{2}{section.1}%
 \contentsline {section}{\numberline {2}Introduction to The Principle of Least Action}{2}{section.2}%
 \contentsline {section}{\numberline {3}Notes on Reading Landau}{2}{section.3}%
 \contentsline {section}{\numberline {4}Legendre Transformation \& Hamilton Formulation}{4}{section.4}%
-\contentsline {section}{\numberline {5}Explict Form of Hamiltonian}{7}{section.5}%
-\contentsline {section}{\numberline {6}Symplectic Form of Hamilton's Equation of Motion}{10}{section.6}%
-\contentsline {section}{\numberline {7}Routhian}{12}{section.7}%
-\contentsline {section}{\numberline {8}Hamilton's Equations From Variation Principle}{15}{section.8}%
-\contentsline {section}{\numberline {9}Canonical Transformation}{16}{section.9}%
+\contentsline {section}{\numberline {5}Remark on Lagrangian Formulation and Hamilton Formulation}{7}{section.5}%
+\contentsline {section}{\numberline {6}Explict Form of Hamiltonian}{9}{section.6}%
+\contentsline {section}{\numberline {7}Symplectic Form of Hamilton's Equation of Motion}{12}{section.7}%
+\contentsline {section}{\numberline {8}Routhian}{14}{section.8}%
+\contentsline {section}{\numberline {9}Hamilton's Equations From Variation Principle}{17}{section.9}%
+\contentsline {section}{\numberline {10}Canonical Transformation}{18}{section.10}%

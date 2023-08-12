@@ -30,17 +30,17 @@ First, we shall introduction the two assumptions from Einstein as below:
 In relativity, we know that there is no more difference between space and time, and we call them altogether as \textit{spacetime}. And we define the spacetime difference between two points is 
 
 \begin{center}
-    \[ (\Delta s)^2 = c^2(time\ interval)^2 - (space\ interval)^2\]
+    \[ (\Delta s)^2 = (space\ interval)^2 - c^2(time\ interval)^2 \]
     and if we write out small displacement, we'll get
-    \[ (ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) \]
+    \[ (ds)^2 = (dx^2 + dy^2 + dz^2) - (cdt)^2  \]
 \end{center}
 
-The value of $ds$ will determine the properties of the interval. For instance, when the object is moving in the speed that is slower than that of the light, then $(ds)^2 > 0$ and thus we call the interval is \textit{timelike}; and when $(ds)^2 < 0$ we would call the interval \textit{spacelike}; when $(ds)^2 = 0$, we call it \textit{lightlike}. What is the difference and physical meaning behind this seperation?
+The value of $ds$ will determine the properties of the interval. For instance, when the object is moving in the speed that is slower than that of the light, then $(ds)^2 < 0$ and thus we call the interval is \textit{timelike}; and when $(ds)^2 > 0$ we would call the interval \textit{spacelike}; when $(ds)^2 = 0$, we call it \textit{lightlike}. What is the difference and physical meaning behind this seperation?
 \\
-\indent
+\indent 
 First, if the distance between two events is \textit{timelike}, that is, $(ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) > 0$, $dt$ cannot be $0$, physically, we say that these two events cannot happen \textbf{at the same time} but can happen \textbf{at the same place}.
 \\
-\indent
+\indent 
 Second, if the distance between two events is \textit{spacelike}, that is, $(ds)^2 = (cdt)^2 - (dx^2 + dy^2 + dz^2) < 0$, $dt$ can be $0$ this time and there must be space interval between these events, in other words, these two events can only happen \textbf{at the same time} but not \textbf{at the same place}.
 \\
 \indent
@@ -51,7 +51,7 @@ Since the spacetime interval is the geometric properties of events or objects, i
 Now assume an object moving with velocity \textbf{v}, and the proper time is denoted as $\tau$
 \begin{center}
     \[ (ds)^2 = (ds')^2 \]
-    \[ c^2(d\tau)^2 = c^2(dt)^2 - (vdt)^2 \]
+    \[ -c^2(d\tau)^2 = (vdt)^2 - c^2(dt)^2 \]
 \end{center}
 
 And then we'll have 
@@ -67,7 +67,7 @@ And if we consider time together with our position coordinates, then we shall de
 
 \begin{itemize}
     \item covariant vector: $\mathbf{x^{\mu}} = <x^0, x^1, x^2, x^3> = <ct, x, y, z>$
-    \item contravariant vector: $\mathbf{x_{\mu}} = <x^0, -x^1, -x^2, -x^3> = <ct, -x, -y, -z>$
+    \item contravariant vector: $\mathbf{x_{\mu}} = <-x^0, x^1, x^2, x^3> = <-ct, x, y, z>$
 \end{itemize}
 
 The transform between them can be achieved by introducing a special tensor called \textbf{Minkowski tensor}, one can adapt +- - - or -+++ convention as one prefer, here we pick the first one. 
@@ -75,10 +75,10 @@ The transform between them can be achieved by introducing a special tensor calle
 \begin{center}
     \[ \eta_{\mu \nu} = 
     \begin{pmatrix}
-        1&0&0&0\\
-        0&-1&0&0\\
-        0&0&-1&0\\
-        0&0&0&-1\\
+        -1&0&0&0\\
+        0&1&0&0\\
+        0&0&1&0\\
+        0&0&0&1\\
     \end{pmatrix} \]
 \end{center}
 
@@ -157,4 +157,77 @@ The proof is as below
 \begin{center}
     
 \end{center}
+
+\section{Solution of EM-SR}
+
+If the light is passing through the space, and be observed by two inertial frames $S$ and $S'$. 
+
+\begin{center}
+    \[ \eta_{\mu \nu}dx^{\mu}dx^{\nu} = (dx)^2 + (dy)^2 + (dz)^2 - (dt)^2 \]
+    \[ = \eta_{\mu \nu}dx'^{\mu}dx'^{\nu} \]
+\end{center}
+
+Then, we have,
+
+\begin{center}
+    \[ x^{\mu} = <x^0, x^1, x^2, x^3> \]
+    \[ x'^{\mu} = <x'^0, x'^1, x'^2, x'^3> \]
+\end{center}
+
+and also Lorentz transformation have the form,
+
+\begin{center}
+    \[ x'^{\mu} = \Lambda^{\mu}_{\ \rho} x^{\rho} \]
+    \[ \Lambda^{\mu}_{\ \rho} \equiv \frac{\partial x'^{\mu}}{\partial x^{\nu}} \]
+\end{center}
+
+To prove that $\eta = \Lambda^T \eta \Lambda$, we could use the properties of \textbf{invariant}, that is, \textbf{Minkowski norm}. 
+
+\begin{center}
+    \[ \Vert x \Vert ^2 = \Vert x' \Vert ^2 \]
+\end{center}
+
+And then we have,
+
+\begin{center}
+    \[ \Vert x \Vert ^2 = \eta_{\mu \nu} x^{\mu}x^{\nu} = \eta_{\rho \gamma}x'^{\rho}x'^{\gamma} \]\\
+    \[ = \eta_{\rho \gamma}(\Lambda^{\rho}_{\ \mu}x^{\mu})(\Lambda^{\gamma}_{\ \nu}x^{\nu}) \]
+    \[ = \eta_{\rho\gamma}\Lambda^{\rho}_{\ \mu}\Lambda^{\gamma}_{\ \nu}x^{\mu}x^{\nu} \]
+\end{center}
+
+for all $x^{\mu}, x^{\nu}$, that is, we'll have,
+
+\begin{center}
+    \[ \eta_{\mu \nu} = \Lambda^{\rho}_{\ \mu} \eta_{\rho\gamma} \Lambda^{\gamma}_{\ \nu} \]
+\end{center}
+
+If we consider the transpose of $\Lambda^{\rho}_{\ \mu}$, and we know that changing the order of the back and forth indexes of Lorentz matrix is just the same as the ordinary matrix, even though the back and forth indexes are not at the same horizontal line in Lorentz matrix.
+
+\begin{center}
+    \[ A \rightarrow A^T \]
+    \[ a_{ij} \rightarrow a_{ji} \]
+    \\
+    \[ \Lambda \rightarrow \Lambda^T \]
+    \[ \Lambda^{\rho}_{\ \mu} \rightarrow \Lambda^{\ \rho}_{\mu} \]
+\end{center}
+
+Then we'll get,
+
+\begin{center}
+    \[ \eta_{\mu \nu} = \left( \Lambda^T \right)^{\ \rho}_{\mu} \eta_{\rho \gamma} \Lambda^{\gamma}_{\ \nu} \]
+    \[ \eta = \Lambda^T \eta \Lambda \]
+\end{center}
+
+\section{Lorentz Group}
+
+In this section, we'll going to prove that Lorentz transformation forms a group called \textbf{Lorentz group}. First, we list the definition of group,
+
+\begin{itemize}
+    \item \textbf{Closure}, the result of the product of two elements also belongs to the group. \[\Lambda_{1}, \Lambda_{2} \in G,\ \ s.t.\ \Lambda_{1}\Lambda_{2} \in G \]
+    \item \textbf{Associativity}, the order of doing product wouldn't affect the result. \[\Lambda_{1} \left(\Lambda_{2}\Lambda_{3}\right) = \left(\Lambda_{1}\Lambda_{2}\right)\Lambda_{3} \]
+    \item \textbf{Identity}, exists a element called \textbf{identity} such that other elements' product with identity will equal to themselves. \[ I \in G,\ \ s.t.\ \Lambda I = I \Lambda = \Lambda \]
+    \item \textbf{Inverse}, for all elements in group, there is an \textbf{inverse} such that the product of element and its inverse will equal to identity. \[ \Lambda^{-1} \in G,\ \ s.t.\ \Lambda \Lambda^{-1} = I \]
+\end{itemize}
+
+
 \end{document}

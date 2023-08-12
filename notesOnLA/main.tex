@@ -11,6 +11,8 @@
 \usepackage{float}
 \usepackage{minted}
 \usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \title{Title}
 \author{Ting-Kai Hsu}
 \date{Date}
@@ -34,6 +36,80 @@ Where,
 \end{center}
 
 By this definition, we see that $A^T = B$ is a $m \times n$ matrix, and simply put, \textbf{the rows become columns, and the columns become rows}.
+
+\section{Matrix-Vector Product}
+
+In this section, we will view the product of matrix and vector with two different aspects. First, given a $n \times m$ matrix $A$ and a vector $\mathbf{x}$ with $m$ rows, then their product can be expressed as,
+
+\begin{center}
+    \[ A\mathbf{x} = \begin{bmatrix}
+        a_{11} & ... & a_{1m}\\
+        . & ... & .\\
+        . & ... & .\\
+        . & ... & .\\
+        a_{n1} & ... & a_{nm}\\
+    \end{bmatrix} \begin{bmatrix}
+        x_1\\
+        .\\
+        .\\
+        .\\
+        x_m\\
+    \end{bmatrix} = \begin{bmatrix}
+        a_{11}x_{1} + ... + a_{1m}x_{m}\\
+        .\\.\\.\\
+        a_{n1}x_{1} + ... + a_{nm}x_{m}\\
+    \end{bmatrix}\]
+\end{center}
+
+In this point of view, we can say that we do the \textbf{inner product with the rows and vector}. On the other hand, 
+
+\begin{center}
+    \[ A\mathbf{x} = \begin{bmatrix}
+        a_{11} & ... & a_{1m}\\
+        . & ... & .\\
+        . & ... & .\\
+        . & ... & .\\
+        a_{n1} & ... & a_{nm}\\
+    \end{bmatrix} \begin{bmatrix}
+        x_1\\
+        .\\
+        .\\
+        .\\
+        x_m\\
+    \end{bmatrix} = x_{1}\begin{bmatrix}
+        a_{11}\\
+        .\\.\\.\\
+        a_{1n}\\
+    \end{bmatrix} + ... + x_{m}\begin{bmatrix}
+        a_{1m}\\
+        .\\.\\.\\
+        a_{nm}\\
+    \end{bmatrix} \]
+\end{center}
+
+This is the \textbf{weighted sums of columns}.
+\\
+\indent Moreover, we observe that the result of matrix-vector product is \textbf{another vector}, in this case, it is a vector \textbf{with n rows}. In engineer points of view, the matrix $A$ can represent the linear system, and the vector $\mathbf{x}$ can represent the input. After operating\footnote{in this case, timing the matrix with the vector input}, we get the vector output. In quantum mechanics, we view the operators as matrice, and by this means, we say that the physical state, that is, the ket, after operation(timing by matrix) is another physical state (ket).
+\\
+\indent Now a question arises, given two $m \times n$ martice $A$ and $B$, if $A\mathbf{w} = B \mathbf{w}$ for all vectors $\mathbf{w}$ in $\mathfrak{R}^n$, can we say the two matrice $A, B$ is the same?
+The proof is simple, we make use of the concept of \textbf{standrad basic of $\mathfrak{R}^n$}, that is, ${\mathbf{e}_1, ..., \mathbf{e}_n}$. Therefore, we'll have,
+
+\begin{center}
+    \[ A\mathbf{e}_i = B\mathbf{e}_i,\ \ for\ i = 1, .. , n \]
+    then,
+    \[ A\mathbf{e}_i = \begin{bmatrix}
+        a_{1i}\\
+        .\\.\\.\\
+        a_{ni}\\
+    \end{bmatrix} \]
+    \[ B\mathbf{e}_i = \begin{bmatrix}
+        b_{1i}\\
+        .\\.\\.\\
+        b_{ni}\\
+    \end{bmatrix} \]
+\end{center}
+
+Then we should be sure $A = B$.
 
 \section{Eigenvalues and Eigenvectors}
 

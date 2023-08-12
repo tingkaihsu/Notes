@@ -166,6 +166,69 @@ Compare each term and then we'd get \textbf{Hamilton equation of motion}
 
 Thus, there would be $2n+1$ \textbf{first order} differential equations.
 
+\section{Remark on Lagrangian Formulation and Hamilton Formulation}
+
+In the above discussion, however, we need to bear in mind that there is a constraint for both formulatoins, that is, 
+
+\begin{center}
+    \[ \frac{\partial^2 L}{\partial \dot{q}_i^2} \neq 0 \]
+\end{center}
+
+Here are some reasons. In Lagrange formulation, if we explictly write out the time derivative term in Lagrange's equation,
+
+\begin{center}
+    \[ \frac{\partial L}{\partial q^a} = \frac{d}{dt} \frac{\partial L}{\partial \dot{q}^a} \]
+    \[ = \left(\frac{\partial}{\partial q^b}\dot{q}^b + \frac{\partial}{\partial \dot{q}^b}\ddot{q}^{\ b} + \frac{\partial }{\partial t} \right) \frac{\partial L}{\partial \dot{q}^a} \]
+\end{center}
+
+Here we use \textbf{Einstein notation convention}. Then,
+
+\begin{center}
+    \[ \ddot{q}^{\ b} \frac{\partial^2 L}{\partial \dot{q}^b \partial \dot{q}^a} = \frac{\partial L}{\partial q^a} - \frac{\partial^2 L}{\partial t \partial \dot{q}^a} - \frac{\partial^2 L}{\partial q^b \partial \dot{q}^a} \dot{q}^b \]
+\end{center}
+
+In the above equation, $\frac{\partial^2 L}{\partial \dot{q}^b \partial \dot{q}^a}$ is a matrix. $\ddot{q}^{\ b}$ need to be unique, and in this case, the uniqueness of $\ddot{q}^{\ b}$ requires that the determinant of the matrix shouldn't be zero, that is,
+
+\begin{center}
+    \[ det\left(\frac{\partial^2 L}{\partial \dot{q}^b \partial \dot{q}^a}\right) \ne 0\]
+\end{center}
+
+Simply put, $\frac{\partial^2 L}{\partial \dot{q}_i^2} \ne 0$.
+
+On the other hand, if we view this with less strick perspective, it merely told us that the mass of the system shouldn't be $0$.
+\\
+\indent In Hamilton formulation, this condition must be satisfied so that Legendre transformation is \textbf{bijective}. In other words, we have to make sure the result of inverse Legendre transformation is well-behaved. We have the transformation between Hamiltonian and Lagrangian be like,
+
+\begin{center}
+    \[ H(q^a, p^a, t) = \dot{q}^ap^a - L(q^a, \dot{q}^a, t) \]
+\end{center}
+
+And recall that the canonical momentum is defined as,
+
+\begin{center}
+    \[ p^a = \frac{\partial L}{\partial \dot{q}^a} = \nabla_{\dot{q}} L \]
+\end{center}
+
+And we must ensure that the canonical momenta is uniquely determined by above definition. With the formal definition of Legendre transformation,
+
+\begin{center}
+    \[ H(q^a, p^a, t) = max_{\dot{q}} \left(\dot{q}^ap^a - L(q^a, \dot{q}^a, t)\right) \]
+\end{center}
+
+That is, we must have,
+
+\begin{center}
+    \[ \nabla_{\dot{q}} \left( \dot{q}^ap^a - L(q^a, p^a, t) \right) = 0 \]
+\end{center}
+
+Which we will get the same equation as the definition of canonical momenta. However, because of the uniqueness of canonical momenta, we must ensure that
+
+\begin{center}
+    \[ \nabla_{\dot{q}}^2 L > 0 \]
+\end{center}
+
+in other words, this means there is \textbf{only one maximum point that ensures the uniqueness of canonical momentum}.
+
 \section{Explict Form of Hamiltonian}
 First, let's consider applying transformation equation $\mathbf{r} = \mathbf{r}(q_1, ..., q_n; t)$ into kinetic energy $T$,
 
@@ -558,5 +621,6 @@ Hence, $\lambda = \mu \nu$, and we can always find a possible \textit{scale tran
 \begin{center}
     \[ p_i\dot{q}_i - H(q_i, p_i, t) = P_i\dot{Q}_i - K(Q_i, P_i, t) + \frac{dF}{dt} \]
 \end{center}
+
 
 \end{document}
