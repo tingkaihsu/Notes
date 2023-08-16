@@ -532,7 +532,7 @@ In our case, there isn't $\dot{p}$ in $f$, and the above equations would become,
 
 Which are exacly Hamilton's equation of motion.
 
-\section{Canonical Transformation}
+\section{Canonical Transformation-Generating Function}
 
 The equal status accorded to coordinates and momenta as independent variables encourages a greater freedom in selecting the pyhsical quantities to be designated as "coordinates" and "momenta". In this section, we'll focus on how to transform from one set of varialbes to another set of variables. First, we shall introduce the most trivial one, \textit{point transformation},
 \\
@@ -621,6 +621,125 @@ Hence, $\lambda = \mu \nu$, and we can always find a possible \textit{scale tran
 \begin{center}
     \[ p_i\dot{q}_i - H(q_i, p_i, t) = P_i\dot{Q}_i - K(Q_i, P_i, t) + \frac{dF}{dt} \]
 \end{center}
+
+A transformation of canonical coordinates with $\lambda \ne 1$ is called \textit{extended canonical transformation}. On the other hand, we merely called the transformation with $\lambda = 1$ \textit{canonical transformation}. If the transformation, 
+
+\begin{center}
+    \[ Q = Q(q, p),\ \ P = P(q, p) \]
+\end{center}
+
+\noindent don't contain time $t$ explictly, then we called it \textit{restricted canonical transformation}.
+\\
+\indent Next, we should focus on the last term function $F$, in fact, if half of the parameters of $F$ come from old canonical variables and the other come from the new one, then $F$ would determine the canonical transformation between $(q, p)$ and $(Q, P)$, called \textbf{generating function} of the transformation. In the following context, we will show how the generating function to determine the transformation.
+\\
+\indent In the beginning, consider $F$ is the function of old coordinates and new coordinates,
+
+\begin{center}
+    \[ F = F_1(q, Q, t) \]
+\end{center}
+
+If we take it into Hamilton equation of transformation, then
+
+\begin{center}
+    \[ dF_1 = p_idq_i - Hdt - P_idQ_i + Kdt \]
+    \[ = \frac{\partial F_1}{\partial q_i} dq_i + \frac{\partial F}{\partial Q_i}dQ_i + \frac{\partial F}{\partial t}dt \]
+\end{center}
+
+Compare the coefficients, we would get the following relation,
+
+\begin{center}
+    \[ p_i = \frac{\partial F_1}{\partial q_i} \]
+    \[ P_i = -\frac{\partial F_1}{\partial Q_i } \]
+    \[ K - H = \frac{\partial F_1}{\partial t} \]
+\end{center}
+
+From the first equation above, we can express $n$ old canonical momenta $p_i$ in terms of $q_i\ , Q_i\ ,\ $ and $t$. Inversely, we can express new canonical coordinates $Q_i$ in terms of $q_i\ ,p_i\ ,\ $ and $t$. Then, similarly, from the second equation above, we can express new canonical momenta in terms of $q_i\ ,Q_i\ ,\ $ and $t$, $P_i = P_i(q, Q, t)$, and by virtue of transformation relation discussed before $Q_i = Q_i(q, p, t)$, we then get the remaining relation $P_i = P_i(q, p, t)$. I think this is just math and provide no new information for physics, since the generating function wouldn't affect the equation of motion anyway.
+\\
+\indent However, it still worthes going through some basic generating functions of canonical transformation. Then, consider, $F = F_2(q, P ,t) - Q_iP_i$, which is a little bit different from the first kind. Yet, let's go through it as above,
+
+\begin{center}
+    \[ dF = p_idq_i - Hdt - P_idQ_i + Kdt \]
+    \[ = \frac{\partial F_2}{\partial q_i}dq_i + \frac{\partial F_2}{\partial P_i}dP_i + \frac{\partial F_2}{\partial t}dt - P_idQ_i - Q_idP_i \]
+\end{center}
+
+Same, by comparing the coefficients, we'd get,
+
+\begin{center}
+    \[ p_i = \frac{\partial F_2}{\partial q_i} \]
+    \[ Q_i = \frac{\partial F_2}{\partial P_i} \]
+    \[ K -H = \frac{\partial F_2}{\partial t} \]
+\end{center}
+
+Third, if $ F = F_3(p, Q, t) + q_ip_i $, by the same way, we'll get,
+
+\begin{center}
+    \[ dF = p_idq_i - Hdt - P_idQ_i + Kdt \]
+    \[ = \frac{\partial F_3}{\partial p_i}dp_i + \frac{\partial F_3}{\partial Q_i}dQ_i + \frac{\partial F_3}{\partial t}dt + p_idq_i + q_idp_i \]
+\end{center}
+
+Then we'll get,
+
+\begin{center}
+    \[ q_i = - \frac{\partial F_3}{\partial p_i} \]
+    \[ P_i = - \frac{\partial F_3}{\partial Q_i} \]
+    \[ K - H = \frac{\partial F_3}{\partial t} \]
+\end{center}
+
+Finally, we can move on to the last one, that is, $F = F_4(p, P, t) + q_ip_i - Q_iP_i $, then,
+
+\begin{center}
+    \[ dF = p_idq_i - Hdt - P_idQ_i + Kdt \]
+    \[ = \frac{\partial F_4}{\partial p_i}dp_i + \frac{\partial F_4}{\partial P_i}dP_i + \frac{\partial F_4}{\partial t} + p_idq_i + q_idp_i - P_idQ_i - Q_idP_i \]
+\end{center}
+
+Then we shall get,
+
+\begin{center}
+    \[ q_i = - \frac{\partial F_4}{\partial p_i} \]
+    \[ Q_i = \frac{\partial F_4}{\partial P_i} \]
+    \[ K - H = \frac{\partial F_4}{\partial t} \]
+\end{center}
+
+Sometimes the generating function cannoot be expressed as above four equations, and it may be the mixture of them. Next, we're going to do some examples.
+\\
+\indent \textbf{Example 1: }if the generating function has the second type form,
+
+\begin{center}
+    \[ F_2(q, P, t) = f_i(q, t)P_i + g(q, t) \]
+\end{center}
+
+that is, $F = F_2 - Q_iP_i $, thus, 
+
+\begin{center}
+    \[ p_i = P_i \frac{\partial f_i}{\partial q_i} + \frac{\partial g}{\partial q_i} \]
+    \[ Q_i = f_i(q, t) \]
+\end{center}
+
+From the form of $Q_i$, we can see that it is the canonical transformation we have mentioned before, that is, \textit{point transformation}.
+\\
+\indent \textbf{Example 2: }if the generating function isn't an explict function of time, then we have,
+
+\begin{center}
+    \[ F = F(q, p, Q, P) \]
+\end{center}
+
+and its differential form would become,
+
+\begin{center}
+    \[ dF = p_idq_i - Hdt - P_idQ_i + Kdt \]
+    \[ = \frac{\partial F}{\partial q_i}dq_i + \frac{\partial F}{\partial p_i}dp_i + \frac{\partial F}{\partial Q_i}dQ_i + \frac{\partial F}{\partial P_i}dP_i \]
+\end{center}
+
+We can see that the new Hamiltonian and the old one are the same, $K = H$. Furthermore, we have the trasformation between canonical variables like,
+
+\begin{center}
+    \[ Q_i = Q_i(q, p) \]
+    \[ P_i = P_i(q, p) \]
+\end{center}
+
+It is \textit{restricted canonical transformation}, and we can conclude that Hamiltonian of \textit{restricted canonical transformatoin} is the same.
+
+\section{Symplectic Approach of Canonical Transformation}
 
 
 \end{document}
