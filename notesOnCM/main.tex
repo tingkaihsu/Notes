@@ -12,6 +12,7 @@
 \usepackage{minted}
 \usepackage{indentfirst}
 \usepackage{bigints}
+\numberwithin{equation}{section}
 \title{Classical Mechanics}
 \author{Ting-Kai Hsu}
 \date{2023/7/6}
@@ -740,6 +741,47 @@ We can see that the new Hamiltonian and the old one are the same, $K = H$. Furth
 It is \textit{restricted canonical transformation}, and we can conclude that Hamiltonian of \textit{restricted canonical transformatoin} is the same.
 
 \section{Symplectic Approach of Canonical Transformation}
+
+In the begining, we focus on \textit{restricted canonical transformation}. One properties of restricted canonical transformation is that the new Hamiltonian $K$ is equal to the old one $H$. We can prove it by what we've just learnt, that is, it is the example of last section, and we use it directly. For restricted canonical transformation, we have,
+
+\begin{equation}
+    \begin{array}{l}
+        Q_i = Q_i(q, p)\\
+        P_i = P_i(q, p)
+    \end{array}
+\end{equation}
+
+In matrix format,
+
+\begin{equation}
+    \begin{array}{l}
+        \pmb{\xi} = \pmb{\xi}(\pmb{\eta})
+    \end{array}
+\end{equation}
+
+Recall the matrix format of Hamilton's equations of motion.
+
+\begin{equation}
+    \dot{\pmb{\eta}} = \pmb{J}\frac{\partial H}{\partial \pmb{\eta}}
+\end{equation}
+
+Then our goal is to find a similar form for new canonical variables. Consider the time derivative of them,
+
+\[
+    \dot{\xi}_j = \sum_{i}{\frac{\partial \xi_j}{\partial \eta_i}\frac{d \eta_i}{d t}} 
+\]
+
+If we try to write it into matrix form, we'll get,
+
+\begin{equation}
+    \dot{\pmb{\xi}} = \pmb{M} \pmb{\dot{\eta}}
+\end{equation}
+
+Where matrix $\pmb{M}$ is,
+
+\begin{center}
+    \[ M_{ij} = \frac{\partial \xi_i}{\partial \eta_j}\]
+\end{center}
 
 
 \end{document}
