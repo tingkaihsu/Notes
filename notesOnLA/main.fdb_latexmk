@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1691650152 "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" "main.pdf" "main" 1691650153
-  "/dev/null" 1691644952 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1692806217 "/home/htk/Desktop/notes/notesOnLA/main.tex" "main.pdf" "main" 1692806217
+  "/dev/null" 1692796787 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1687783907 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/htk/Desktop/EBook/notes/notesOnLA/main.tex" 1691650152 10500 80fd16eac9b39520b14dab4ec105ddc3 ""
+  "/home/htk/Desktop/notes/notesOnLA/main.tex" 1692806217 11615 da5afba78ba07e27a74c7fc9104d3598 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -181,9 +181,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1688010230 4073795 a82a847ac97773bf4a607ab050efa3a1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1688010234 1435896 8bc8cb4ca76f4ba8930a3231f93abd8c ""
-  "main.aux" 1691650153 1332 7858240e296d76de50570f8e104f2b80 "pdflatex"
-  "main.out" 1691650153 868 16217531b63e6bc7576225b623e3f8e9 "pdflatex"
-  "main.tex" 1691650152 10500 80fd16eac9b39520b14dab4ec105ddc3 ""
+  "main.aux" 1692806217 1433 9aa53ca3996e06431b364609f2bc970c "pdflatex"
+  "main.out" 1692806217 931 cb3fa322b9cd2e4d09a42ed30eeafbbf "pdflatex"
+  "main.tex" 1692806217 11615 da5afba78ba07e27a74c7fc9104d3598 ""
   (generated)
   "main.aux"
   "main.log"

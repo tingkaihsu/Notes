@@ -252,4 +252,32 @@ There are some remarks about $\Lambda$
     \item \textbf{Remark 3} The eigenvectors are not unique, in other words, one can multiply some \textit{nonzero} constant.
 \end{itemize}
 
+\section{RREF}
+
+RREF stands for \textit{Reduced Row Echelon Form}. Before introducing it, let's talk  about REF, row Echelon form. Here are the conditions,
+
+\begin{itemize}
+    \item Each \textit{nonzero} row lies above every \textit{zero} row.
+    \item Leading entries are Echelon form, shown below, \[ \begin{bmatrix}
+        1&0&0&6&0&3\\
+        0&0&1&5&0&7\\
+        0&0&0&2&0&4\\
+        0&0&0&0&0&0\\
+        0&0&0&0&0&0\\
+    \end{bmatrix}\]
+\end{itemize}
+
+The leading entries are \textbf{the first nonzero number} in each row. Echelon form is that the leading entries in each nonzero row form like a stair goinh down from left to right. 
+\\
+\indent RREF inherits the properties of REF with additional condition, that is, the columns containing leading entries are columns standrad vector\footnote{\textbf{standrad vector} can be seen as unit vector.}. For example, 
+
+\[ \begin{bmatrix}
+    1&2&0&0&-1&-3\\
+    0&0&1&0&0&-3\\
+    0&0&0&1&1&2\\
+    0&0&0&0&0&0\\
+\end{bmatrix}
+\]
+
+As we can see, the 1st, 3rd, and 4th columns with leading entries are standard vectors. It can be proved that RREF is unique.
 \end{document}

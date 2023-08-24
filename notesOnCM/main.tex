@@ -425,6 +425,42 @@ By Hamilton's equation of motion,
     \[ \dot{\pmb{\eta}} = \pmb{J}\frac{\partial H}{\partial \pmb{\eta}} \]
 \end{center}
 
+There are some properties of symplectic matrix,
+
+\begin{center}
+    \[ \pmb{J}^{-1} = \begin{bmatrix}
+        \pmb{0}&\pmb{-1}\\
+        \pmb{1}&\pmb{0}
+    \end{bmatrix}
+    \]
+\end{center}
+
+\begin{center}
+    \[ \pmb{J}^{-1} = \pmb{J}^T\]
+\end{center}
+
+\begin{center}
+    \[ \det\left(\pmb{J}^{-1}\pmb{J}\right) = 
+    \det\left(\begin{bmatrix}
+        \pmb{0}&\pmb{-1}\\
+        \pmb{1}&\pmb{0}\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        \pmb{0}&\pmb{1}\\
+        \pmb{-1}&\pmb{0}\\
+    \end{bmatrix}\right)
+    = \det\left(\begin{bmatrix}
+        \pmb{1}&\pmb{0}\\
+        \pmb{0}&\pmb{1}
+    \end{bmatrix}\right)
+    = 1
+    \]
+\end{center}
+
+\begin{center}
+    \[ \pmb{JJ} = \pmb{1} \]
+\end{center}
+
 \section{Routhian}
 
 Then we should talk about the \textbf{cyclic coordinate} in Hamilton foromulation. As we already knew, if a coordinate is cyclic, say is $q_n$, the Lagrangian can be written as 
@@ -777,11 +813,160 @@ If we try to write it into matrix form, we'll get,
     \dot{\pmb{\xi}} = \pmb{M} \pmb{\dot{\eta}}
 \end{equation}
 
-Where matrix $\pmb{M}$ is,
+Where transformation matrix $\pmb{M}$ is,
 
 \begin{center}
-    \[ M_{ij} = \frac{\partial \xi_i}{\partial \eta_j}\]
+    \[ M^{i}_{\ j} = \frac{\partial \xi_i}{\partial \eta_j}\]
 \end{center}
 
+\[
+    \begin{bmatrix}
+        \dot{\xi}_1\\
+        \vdots\\
+        \dot \xi_j\\
+        \vdots\\
+        \dot \xi_n
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{\partial \xi_1}{\partial \eta_1}&\hdots&\frac{\partial \xi_1}{\partial \eta_i}&\hdots&\frac{\partial \xi_1}{\partial \eta_n}\\
+        \vdots&\ddots&\ddots&\ddots&\vdots\\
+        \frac{\partial \xi_j}{\partial \eta_1}&\hdots&\frac{\partial \xi_j}{\partial \eta_i}&\hdots&\frac{\partial \xi_j}{\partial \eta_n}\\
+        \vdots&\ddots&\ddots&\ddots&\vdots\\
+        \frac{\partial \xi_n}{\partial \eta_1}&\hdots&\frac{\partial \xi_n}{\partial \eta_i}&\hdots&\frac{\partial \xi_n}{\partial \eta_n}\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        \dot \eta_1\\
+        \vdots\\
+        \dot \eta_i\\
+        \vdots\\
+        \dot \eta_n\\
+    \end{bmatrix}
+\]
+Then the most important part comes, if (11.2) can be inversed, that is,
 
+\begin{equation}
+    \pmb{\eta} = \pmb{\eta}(\pmb{\xi})
+\end{equation}
+
+We can claim that the old Hamiltonian $H(q, p, t)$ can be expressed by new canonical variables,
+
+\[
+    H(\pmb{\eta}, t) \rightarrow H(\pmb{\xi}, t)
+\]
+
+Then in equation 11.3, we have,
+
+\[
+    \frac{\partial H}{\partial \eta_k} = \sum_{l}{\frac{\partial H}{\partial \xi_l}\frac{\partial \xi_l}{\partial \eta_k}} 
+\]
+
+In matrix form,
+
+\[
+    \begin{bmatrix}
+        \frac{\partial H}{\partial \eta_1}\\
+        \vdots\\
+        \frac{\partial H}{\partial \eta_k}\\
+        \vdots\\
+        \frac{\partial H}{\partial \eta_n}
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{\partial \xi_1}{\partial \eta_1}&\hdots&\frac{\partial \xi_l}{\partial \eta_1}&\hdots&\frac{\partial \xi_n}{\partial \eta_1}\\
+        \vdots&\ddots&\ddots&\ddots&\vdots\\
+        \frac{\partial \xi_1}{\partial \eta_k}&\hdots&\frac{\partial \xi_l}{\partial \eta_k}&\hdots&\frac{\partial \xi_n}{\partial \eta_k}\\
+        \vdots&\ddots&\ddots&\ddots&\vdots\\
+        \frac{\partial \xi_1}{\partial \eta_n}&\hdots&\frac{\partial \xi_l}{\partial \eta_n}&\hdots&\frac{\partial \xi_n}{\partial \eta_n}\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        \frac{\partial H}{\partial \xi_{1}}\\
+        \vdots\\
+        \frac{\partial H}{\partial \xi_{l}}\\
+        \vdots\\
+        \frac{\partial H}{\partial \xi_{n}}
+    \end{bmatrix}
+\]
+
+As we can see, it can be written in,
+
+\begin{equation}
+    \pmb{\dot{\eta}} = \pmb{J}\pmb{M}^{T}\frac{\partial H}{\partial \pmb{\xi}}
+\end{equation}
+with equation 11.4, we have,
+
+\[
+    \dot{\pmb{\xi}} = \pmb{M}\ \pmb{J}\pmb{M}^T \frac{\partial H}{\partial \pmb{\xi}}
+\]
+
+By Hamilton's equations of motion for the new varialbes $\pmb{\dot{\xi}} = \pmb{J}\frac{\partial H}{\partial \pmb{\xi}}$, we have,
+
+\begin{equation}
+    \pmb{MJM}^T \frac{\partial H}{\partial \pmb{\xi}} = \pmb{J}\frac{\partial H}{\partial \pmb{\xi}}
+\end{equation}
+
+Therefore, we should have so-called \textbf{symplectic condition}
+
+\begin{equation}
+    \pmb{MJM}^T = \pmb{J}
+\end{equation}
+
+And then, we can derive,
+
+\begin{center}
+    \[ \pmb{JM}^{T} = \pmb{M}^{-1}\pmb{J}\]
+    times $\pmb{J}$ from left
+    \[ \pmb{J}\pmb{JM}^T = \pmb{JM}^{-1}\pmb{J} \]
+    and then times $\pmb{J}$ from right
+    \[ \pmb{JJM}^T\pmb{J} = \pmb{JM}^{-1}\pmb{JJ}\]
+    \[ \pmb{M}^T\pmb{J} = \pmb{JM}^{-1}\]
+\end{center}
+
+Then we'll have,
+
+\begin{equation}
+    \pmb{M}^T\pmb{JM} = \pmb{J}
+\end{equation}
+
+which is another form of \textbf{symplectic condition}.
+
+\section{Restricted Canonical Transformations Forms a Group $\mathcal{G}$}
+
+We need to notice that formula, $\mathbf{M}^T\mathbf{JM} = \mathbf{J}$. For starters, we can prove the \textbf{closure} of canonical transformation. Consider $\mathbf{M}_1,\ \mathbf{M}_2 \in \mathcal{G}$ ,
+
+\begin{equation}
+    \left(\mathbf{M}_1\mathbf{M}_2\right)^T \mathbf{J}\left(\mathbf{M}_1\mathbf{M}_2\right) = \mathbf{M}_2^T\mathbf{M}_1^T\mathbf{J}\mathbf{M}_1\mathbf{M}_2 = \mathbf{M}_2^T\mathbf{J}\mathbf{M}_2 = \mathbf{J}
+\end{equation}
+
+which remains in group $\mathcal{G}$.
+\\
+\indent Then we can prove the \textbf{accosiativity}. Because \textit{restricted canonical transformations can be expressed in matrix form} and that the product of matrice has accosiativity, we can claim that the accosiativity holds.
+\\
+\indent Then we prove the \textbf{indentity}, and consider the identity matrix $\mathbf{I}$,
+
+\[
+    \mathbf{I}^T\mathbf{JI} = \begin{bmatrix}
+        \mathbf{1}&\mathbf{0}\\
+        \mathbf{0}&\mathbf{1}\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        \mathbf{0}&\mathbf{1}\\
+        \mathbf{-1}&\mathbf{0}\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        \mathbf{1}&\mathbf{0}\\
+        \mathbf{0}&\mathbf{1}\\
+    \end{bmatrix}
+    = \mathbf{J}
+\]
+
+Then we can see that $\mathbf{I} \in \mathcal{G}$ and it plays the role of \textbf{identity} in canonical transformation\footnote{this kind of transformation is called \textit{identical transformation}.}.
+\\
+\indent Finally, we have to prove \textbf{inverse} exists for every member in group, that is, we need to prove that there is \textbf{inverse matrix}, and this is simple. What we have to do is to check the determinant of transformation matrix is not zero. 
+
+\begin{equation}
+    \det(\mathbf{M}^T\mathbf{JM}) = \det(\mathbf{M})^2\det(\mathbf{J}) = \det(\mathbf{J}) 
+\end{equation}
+
+which implies $\det(\mathbf{M}) = \pm 1$.
+
+\section{}
 \end{document}
