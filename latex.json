@@ -1,0 +1,40 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"insert figure":{
+		"prefix": "figure",
+		"body":["\\begin{figure}[H]\n\t\\centering\n\t\\includegraphics[width=${2}]{${3}}\n\t\\caption{${4}}\n\t\\label{${5}}\n\\end{figure}"],
+		"description": "insert figure snippet"
+	},
+	"insert table":{
+		"prefix": "table",
+		"body":["\\begin{table}[${1:htbp}]\n\t\\centering\n\t\\caption{${2:caption}}\n\t\t\\begin{tabular}{${3:c|c}}\n\t\t\\hline\n\t\t${4:column1 & column2}\n\t\t\\end{tabular}\n\t\\label{${5:label}}\n\\end{table}"],
+		"description": "insert table snippet"
+	},
+	"insert enumerate":{
+		"prefix": "enumerate",
+		"body":["\\begin{enumerate}\n\t\\item ${1:enumerate1}\n\t\\item ${2:enumerate2}\n\\end{enumerate}"],
+		"description": "insert enumerate snippet"
+	},
+	"insert item":{
+		"prefix": "itemize",
+		"body":["\\begin{itemize}\n\t\\item ${1:itemsize1}\n\t\\item ${2:itemsize2}\n\\end{itemize}"],
+		"description": "insert item snippet"
+	},
+	"insert initialize":{
+		"prefix": "initialize",
+		"body": ["\\documentclass[12pt]{article}\n\\usepackage{braket}\n\\usepackage{physics}\n\\usepackage{graphicx}\n\\usepackage{times}\n\\usepackage[export]{adjustbox}\n\\usepackage{listings}\n\\usepackage{mathcomp}\n\\usepackage{hyperref}\n\\usepackage{bm,amsmath}\n\\usepackage{float}\n\\usepackage{indentfirst}\n\\usepackage{bigints}\n\\usepackage{listings}\n\\usepackage{color}\n\\hypersetup{\ncolorlinks=true,\nlinkcolor=blue,\nfilecolor=magenta,\nurlcolor=cyan,\npdftitle={Overleaf Example},\npdfpagemode=FullScreen,\n}\n\\definecolor{dkgreen}{rgb}{0,0.6,0}\n\\definecolor{gray}{rgb}{0.5,0.5,0.5}\n\\definecolor{mauve}{rgb}{0.58,0,0.82}\n\\lstset{frame=tb,\nlanguage=Python,\naboveskip=3mm,\nbelowskip=3mm,\nstepnumber = 1,\nshowstringspaces=false,\ncolumns=flexible,\nbasicstyle={\\small\\ttfamily},\nnumbers=left,\nnumberstyle=\\color{gray},\nkeywordstyle=\\color{blue},\ncommentstyle=\\color{dkgreen},\nstringstyle=\\color{mauve},\nbreaklines=true,\nbreakatwhitespace=true,\ntabsize=3\n}\n\\numberwithin{equation}{section}\n\n\\title{}\n\\author{Ting-Kai Hsu}\n\\date{\\today}\n\n\\begin{document}\n\\maketitle\n\\tableofcontents\n\n\\end{document}"],
+		"description": "insert initialize snippet"
+	}
+}
